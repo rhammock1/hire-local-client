@@ -4,6 +4,10 @@ import { Input, Label } from '../../components/Form/Form';
 
 class SearchRoute extends React.Component {
 
+    state = {
+        seeAll: false,
+    }
+
     findZipcodesInRadius = () => {
         // USE ZipCode API 
     }
@@ -13,18 +17,25 @@ class SearchRoute extends React.Component {
     }
 
     handleSeeAllJobs = () => {
-        
+        const { seeAll } = this.state;
+        this.setState({ seeAll: !seeAll });
     }
 
     render() {
+        const { seeAll } = this.state;
         return (
             <section>
                 <h2>Find a job</h2>
                 <Search />
                 <div className='input-container'>
                     <Label htmlFor='all-jobs-input'>See all jobs</Label>
-                    <Input type='checkbox' id='all-jobs-input' name='all-jobs-input' />
+                    <Input onChange={this.handleSeeAllJobs} type='checkbox' id='all-jobs-input' name='all-jobs-input' />
                 </div>
+                {(seeAll) && (
+                    <div className='job-container'>
+                        
+                    </div>
+                )}
             </section>
         )
     }
