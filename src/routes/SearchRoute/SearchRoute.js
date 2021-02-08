@@ -13,25 +13,53 @@ class SearchRoute extends React.Component {
 
     static contextType = JobContext;
 
-    findZipcodesInRadius = () => {
+    findZipcodesInRadius = (zipcode, radius) => {
         // USE ZipCode API 
+        const endpoint = `https://api.zip-codes.com/ZipCodesAPI.svc/1.0/FindZipCodesInRadius?zipcode=${zipcode}&maximumradius=${radius}&country=US&key=CYGEVFYFKKGHXTME9Y9J`;
+        return fetch(endpoint)
+            .then(res =>
+                (!res.ok)
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+            )
+            .then((data) => {
+                const zips = data.DataList;
+                let zipcodes = [];
+                zips.map((obj) => zipcodes.push(obj.Code));
+                return zipcodes;
+            })
+            .catch((error) => console.error(error));
     }
 
-    handleSearch = (event) => {
+    handleSearch = async (event) => {
         event.preventDefault();
+        event.persist();
+
         const { jobs } = this.context;
         
         const title = event.target['search-title-input'].value;
         let zipcode = event.target['search-zipcode-input'].value;
         let radius = event.target['search-radius-input'].value;
 
+        // Check zipcode and radius
+        const zipcodesInRadius = await this.findZipcodesInRadius(zipcode, radius);
+        console.log(zipcodesInRadius);
+
         title.toLowerCase();
         // Split title variable at the spaces to identify keywords
         let keywords = title.split(' ');
         // search jobs for job titles with matching keywords
         const matchingJobs = jobs.map((job) => (job.title.toLowerCase().includes(keywords)) ? job : null)
-        
-        this.setState({ results: matchingJobs });
+
+        // Check if matchingJobs contains the zipcodesInRadius
+        let results = [];
+        matchingJobs.map((job) => {
+            console.log(job.zipcode);
+            return (zipcodesInRadius.includes(job.zipcode.toString())) 
+                ? results.push(job)
+                : null })
+        console.log(results);
+        this.setState({ results });
 
         event.target['search-title-input'].value = '';
         event.target['search-zipcode-input'].value = '';
@@ -46,7 +74,6 @@ class SearchRoute extends React.Component {
     render() {
         const { seeAll, results } = this.state;
         const { jobs } = this.context;
-        console.log(jobs);
         return (
             <section>
                 <h2>Find a job</h2>
