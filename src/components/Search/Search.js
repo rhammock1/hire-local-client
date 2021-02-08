@@ -24,11 +24,12 @@ class Search extends React.Component {
                         </div>
                         <div className='form-group'>
                             <Label htmlFor='search-zipcode-input'>
-                            ZipCode<Required />
+                            ZIP Code<Required />
                             </Label>
                             <Input
                                 id='search-zipcode-input'
                                 name='search-zipcode'
+                                pattern='^\d{5}$'
                                 required
                             />
                         </div>
@@ -37,6 +38,7 @@ class Search extends React.Component {
                             Radius<Required />
                             </Label>
                             <Input
+                                type='number'
                                 id='search-radius-input'
                                 name='search-radius'
                                 required

@@ -8,15 +8,16 @@ const Job = function(props) {
         title,
         exp_level,
         job_type,
-        description,
+        summary,
+        location,
     } = props;
 
     return(
         <div className='job-container'>
-            <h4>{title}</h4>
+            <h4>{title}</h4><span>{location}</span>
             <div className='job-card-details'>
                 {/* CSS grid for this part maybe 1 / 2  */}
-                <p>Summary: {description}</p>
+                <p>Summary: {summary}</p>
                 <p>Experience Level: {exp_level}</p>
                 <p>Job Type: {job_type}</p>
             </div>

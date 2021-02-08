@@ -26,7 +26,7 @@ export default class App extends Component {
   componentDidMount() {
     RestApiService.getAllJobs()
       .then((jobs) => {
-        return this.setState({ jobs });
+        return this.setState({ jobs: jobs.notExpired });
       })
       .catch((error) => this.setState({ hasError: true, error }));
   }
