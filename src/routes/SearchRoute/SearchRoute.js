@@ -15,7 +15,7 @@ class SearchRoute extends React.Component {
 
     findZipcodesInRadius = (zipcode, radius) => {
         // USE ZipCode API 
-        const endpoint = `https://api.zip-codes.com/ZipCodesAPI.svc/1.0/FindZipCodesInRadius?zipcode=${zipcode}&maximumradius=${radius}&country=US&key=CYGEVFYFKKGHXTME9Y9J`;
+        const endpoint = `https://api.zip-codes.com/ZipCodesAPI.svc/1.0/FindZipCodesInRadius?zipcode=${zipcode}&maximumradius=${radius}&country=US&key=${process.env.REACT_APP_ZIP_KEY}`;
         return fetch(endpoint)
             .then(res =>
                 (!res.ok)
@@ -54,7 +54,6 @@ class SearchRoute extends React.Component {
         // Check if matchingJobs contains the zipcodesInRadius
         let results = [];
         matchingJobs.map((job) => {
-            console.log(job.zipcode);
             return (zipcodesInRadius.includes(job.zipcode.toString())) 
                 ? results.push(job)
                 : null })
