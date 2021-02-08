@@ -1,12 +1,16 @@
 import React from 'react';
 import Search from '../../components/Search/Search';
+import Job from '../../components/Job/Job';
 import { Input, Label } from '../../components/Form/Form';
+import JobContext from '../../contexts/JobContext';
 
 class SearchRoute extends React.Component {
 
     state = {
         seeAll: false,
     }
+
+    static contextType = JobContext;
 
     findZipcodesInRadius = () => {
         // USE ZipCode API 
@@ -23,6 +27,7 @@ class SearchRoute extends React.Component {
 
     render() {
         const { seeAll } = this.state;
+        const { jobs } = this.context;
         return (
             <section>
                 <h2>Find a job</h2>
@@ -31,11 +36,15 @@ class SearchRoute extends React.Component {
                     <Label htmlFor='all-jobs-input'>See all jobs</Label>
                     <Input onChange={this.handleSeeAllJobs} type='checkbox' id='all-jobs-input' name='all-jobs-input' />
                 </div>
-                {(seeAll) && (
-                    <div className='job-container'>
-                        
+                {(seeAll) ? (
+                    <div className='jobs-container'>
+                        {jobs.map((job) => (
+                        <Job 
+                            key={job.id}
+                            {...job}
+                            />))}
                     </div>
-                )}
+                ) : null}
             </section>
         )
     }
