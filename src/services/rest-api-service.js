@@ -56,7 +56,7 @@ const RestApiService = {
               'content-type': 'application/json',
               'authorization': `Bearer ${TokenService.getAuthToken()}`,
             },
-            body: JSON.stringify(job_id),
+            body: JSON.stringify({ job_id }),
           })
             .then(res =>
               (!res.ok)
