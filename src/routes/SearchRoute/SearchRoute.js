@@ -43,7 +43,6 @@ class SearchRoute extends React.Component {
 
         // Check zipcode and radius
         const zipcodesInRadius = await this.findZipcodesInRadius(zipcode, radius);
-        console.log(zipcodesInRadius);
 
         title.toLowerCase();
         // Split title variable at the spaces to identify keywords
@@ -57,7 +56,6 @@ class SearchRoute extends React.Component {
             return (zipcodesInRadius.includes(job.zipcode.toString())) 
                 ? results.push(job)
                 : null })
-        console.log(results);
         this.setState({ results });
 
         event.target['search-title-input'].value = '';
