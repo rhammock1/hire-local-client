@@ -3,6 +3,10 @@
     height:100%;
     font-size: large;
 }
+.Label {
+    width:max-content;
+    
+}
 .Input {
     width: 95%;
     background-color: #EAEFBD;

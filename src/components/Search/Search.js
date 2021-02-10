@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import { Input, Required, Label } from '../Form/Form';
+import './Search.css';
 
 class Search extends React.Component {
 

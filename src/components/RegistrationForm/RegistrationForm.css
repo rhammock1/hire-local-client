@@ -23,4 +23,8 @@ footer {
     border: none;
     background-color: #90BE6D;
     border-radius: 10%;
+    font-weight:600;
+}
+.Button:hover {
+    transform: translateY(-5px);
 }

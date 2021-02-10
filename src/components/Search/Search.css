@@ -1,0 +1,14 @@
+.job-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.input-container {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 75%;
+}
+#all-jobs-input {
+    width: min-content;
+}
