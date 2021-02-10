@@ -11,6 +11,7 @@ import RestApiService from '../../services/rest-api-service';
 import UserContext from '../../contexts/UserContext';
 import JobContext from '../../contexts/JobContext';
 import './App.css';
+import JobRoute from '../../routes/JobRoute/JobRoute';
 
 export default class App extends Component {
   state = {
@@ -95,9 +96,6 @@ export default class App extends Component {
         .then((saves) => this.setState({ userSaves: saves.saves }))
         .catch((error) => this.setState({ error, hasError: true }));
     }
-    
-    
-    
   }
 
   render() {
@@ -122,10 +120,10 @@ export default class App extends Component {
                 path={'/'}
                 component={SearchRoute}
               />
-              {/* <PrivateRoute
-                path={'/learn'}
-                component={LearningRoute}
-              /> */}
+              <PrivateRoute
+                path={'/jobs/:jobId'}
+                component={JobRoute}
+              />
               <PublicOnlyRoute
                 path={'/register'}
                 component={RegistrationRoute}
