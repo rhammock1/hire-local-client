@@ -30,8 +30,10 @@ class Job extends React.Component {
         return(
             <div className='job-container'>
                 <div className='job-details'>
-                    <h4>{title}</h4>
-                    <span>{location}</span>
+                    <div className='job-title'>
+                        <h4>{title}</h4>
+                        <span>{location}</span>
+                    </div>
                     <span onClick={() => handleSave(id)} className={`job ${saveClass}`}>&#10084;</span>
                 </div>
                 <div className='job-card-details'>
