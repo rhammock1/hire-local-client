@@ -12,3 +12,7 @@ header {
     align-items: baseline;
     justify-content: space-around;
 }
+#logo {
+    width: 50%;
+    height: 50%;
+}

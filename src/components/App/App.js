@@ -34,12 +34,14 @@ export default class App extends Component {
         return this.setState({ jobs: jobs.notExpired });
       })
       .catch((error) => this.setState({ hasError: true, error }));
+    const { user } = this.context;
+    if (user) {
+      this.getUserSaves();
+    }
   }
 
   getUserSaves = () => {
-    console.log('here i am');
     const { user } = this.context;
-
     RestApiService.getUserSaves(user.id)
       .then((saves) => this.setState({ userSaves: saves.saves }))
       .catch((error) => this.setState({ error, hasError: true }));

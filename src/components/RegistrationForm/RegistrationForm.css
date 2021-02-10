@@ -1,0 +1,26 @@
+section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+section>p {
+    width: 95%;
+    margin:auto;
+    margin-bottom: 10px;
+}
+form>div {
+    width: 75%;
+}
+footer {
+    display: flex;
+    flex-direction: column;
+}
+.Button {
+    width: fit-content;
+    margin: 10px auto;
+    padding: 5%;
+    border: none;
+    background-color: #90BE6D;
+    border-radius: 10%;
+}

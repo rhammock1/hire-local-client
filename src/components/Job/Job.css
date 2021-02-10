@@ -1,3 +1,6 @@
 .job-saved {
-    background-color: pink;
+    color: red;
+}
+.job {
+    font-size: 45px;
 }

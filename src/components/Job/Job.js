@@ -37,7 +37,7 @@ class Job extends React.Component {
                     <p>Experience Level: {exp_level}</p>
                     <p>Job Type: {job_type}</p>
                 </div>
-                <img onClick={() => handleSave(id)} alt='heart icon' className={saveClass} src="https://img.icons8.com/metro/26/000000/like.png"/>
+                <span onClick={() => handleSave(id)} className={`job ${saveClass}`}>&#10084;</span>
                 <Button type='button'><Link to={`/jobs/${id}`}>More Details</Link></Button>
             </div>
         )
