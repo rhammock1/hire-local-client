@@ -70,7 +70,7 @@ class SearchRoute extends React.Component {
 
     render() {
         const { seeAll, results } = this.state;
-        const { jobs, handleSave } = this.context;
+        const { jobs } = this.context;
         return (
             <section>
                 <h2>Find a job</h2>
@@ -84,7 +84,6 @@ class SearchRoute extends React.Component {
                     jobs.map((job) => (
                     <Job 
                         key={job.id}
-                        handleSave={handleSave}
                         {...job}
                         />))
                 ) : (

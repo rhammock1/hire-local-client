@@ -8,7 +8,7 @@ const RestApiService = {
                 (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
-            )
+            );
     },
     getJobById(job_id) {
         return fetch(`${config.API_ENDPOINT}/jobs/${job_id}`)
@@ -16,7 +16,7 @@ const RestApiService = {
                 (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
-            )
+            );
     },
     addNewJob(newJob) {
         return fetch(`${config.API_ENDPOINT}/jobs`, {
@@ -31,7 +31,7 @@ const RestApiService = {
               (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
-            )
+            );
     },
 
     getUserSaves(user_id) {
@@ -46,7 +46,7 @@ const RestApiService = {
               (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
-            )
+            );
     },
 
     saveJob(user_id, job_id) {
@@ -62,7 +62,7 @@ const RestApiService = {
               (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
-            )
+            );
     },
     
     deleteSave(user_id, save_id) {
@@ -77,8 +77,8 @@ const RestApiService = {
             .then(res =>
               (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
-                : res.json()
-            )
+                : res
+            );
     }
 
 }

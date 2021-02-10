@@ -16,10 +16,9 @@ class Job extends React.Component {
             job_type,
             summary,
             location,
-            handleSave
         } = this.props;
 
-        const { userSaves } = this.context;
+        const { userSaves, handleSave } = this.context;
         let saveClass;
         userSaves.map((save) => {
             if (save.job_id === id) {
