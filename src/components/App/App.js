@@ -34,7 +34,10 @@ export default class App extends Component {
         return this.setState({ jobs: jobs.notExpired });
       })
       .catch((error) => this.setState({ hasError: true, error }));
-    
+  }
+
+  getUserSaves = () => {
+    console.log('here i am');
     const { user } = this.context;
 
     RestApiService.getUserSaves(user.id)
@@ -101,6 +104,7 @@ export default class App extends Component {
       jobs,
       userSaves,
       handleSave: this.handleSave,
+      getUserSaves: this.getUserSaves,
     }
     return (
       <div className='App'>

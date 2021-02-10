@@ -1,0 +1,14 @@
+h1 {
+    width: fit-content;
+}
+nav {
+    width: fit-content;
+}
+nav>a {
+    padding: 0 5px;
+}
+header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+}

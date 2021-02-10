@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
+import JobContext from '../../contexts/JobContext'
 
 class LoginRoute extends Component {
   static defaultProps = {
@@ -9,7 +10,10 @@ class LoginRoute extends Component {
     },
   }
 
-  handleLoginSuccess = () => {
+  static contextType = JobContext;
+
+  handleLoginSuccess = async () => {
+    await this.context.getUserSaves();
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/'
     history.push(destination)

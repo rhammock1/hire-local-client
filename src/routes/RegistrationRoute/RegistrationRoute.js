@@ -8,7 +8,8 @@ class RegistrationRoute extends Component {
     },
   }
 
-  handleRegistrationSuccess = () => {
+
+  handleRegistrationSuccess = async () => {
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/'
     history.push(destination)
