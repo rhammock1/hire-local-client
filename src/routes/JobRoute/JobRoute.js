@@ -1,4 +1,5 @@
 import React from 'react';
+import JobDetails from '../../components/JobDetails/JobDetails';
 import JobContext from '../../contexts/JobContext';
 
 class JobRoute extends React.Component {
@@ -38,7 +39,8 @@ class JobRoute extends React.Component {
 
         return (
             <section>
-               <h2>{job.title}</h2> 
+                <h2>{job.title}</h2>
+                <JobDetails {...job} />
             </section>
         )
     }
