@@ -35,7 +35,7 @@ export default class App extends Component {
       })
       .catch((error) => this.setState({ hasError: true, error }));
     const { user } = this.context;
-    if (user) {
+    if (user.hasOwnProperty('id')) {
       this.getUserSaves();
     }
   }
