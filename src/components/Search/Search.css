@@ -7,3 +7,7 @@
 #all-jobs-input {
     width: min-content;
 }
+.container {
+    display:flex;
+    justify-content: center;
+}

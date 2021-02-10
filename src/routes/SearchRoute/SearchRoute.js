@@ -9,6 +9,7 @@ class SearchRoute extends React.Component {
     state = {
         seeAll: false,
         results: [],
+        loading: false,
     }
 
     static contextType = JobContext;
@@ -34,7 +35,7 @@ class SearchRoute extends React.Component {
     handleSearch = async (event) => {
         event.preventDefault();
         event.persist();
-
+        this.setState({ loading: true });
         const { jobs } = this.context;
         
         const title = event.target['search-title-input'].value;
@@ -61,6 +62,8 @@ class SearchRoute extends React.Component {
         event.target['search-title-input'].value = '';
         event.target['search-zipcode-input'].value = '';
         event.target['search-radius-input'].value = '';
+        
+        this.setState({ loading: false });
     }
 
     handleSeeAllJobs = () => {
@@ -69,7 +72,7 @@ class SearchRoute extends React.Component {
     }
 
     render() {
-        const { seeAll, results } = this.state;
+        const { seeAll, results, loading } = this.state;
         const { jobs } = this.context;
         return (
             <section>
@@ -79,20 +82,26 @@ class SearchRoute extends React.Component {
                     <Label htmlFor='all-jobs-input'>See all jobs</Label>
                     <Input onChange={this.handleSeeAllJobs} type='checkbox' id='all-jobs-input' name='all-jobs-input' />
                 </div>
-                <div className='jobs-container'>
-                {(seeAll) ? (
-                    jobs.map((job) => (
-                    <Job 
-                        key={job.id}
-                        {...job}
-                        />))
-                ) : (
-                    results.map((result) => (
-                        <Job key={result.id}
-                        {...result} />
-                    )))
-                }
+                <div className='container'>
+                    {(loading)
+                        ? <img id='loading' src='https://media.giphy.com/media/KKCuBooszlPG0/giphy.gif' alt='loading search results' />
+                        : <div className='jobs-container'>
+                            {(seeAll) ? (
+                                jobs.map((job) => (
+                                <Job 
+                                    key={job.id}
+                                    {...job}
+                                    />))
+                            ) : (
+                                results.map((result) => (
+                                    <Job key={result.id}
+                                    {...result} />
+                                )))
+                            }
+                            </div>
+                    }
                 </div>
+                
             </section>
         )
     }
