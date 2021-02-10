@@ -1,8 +1,3 @@
-.job-container {
-    display:flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
 .input-container {
     display:flex;
     flex-direction: row;

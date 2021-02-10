@@ -29,14 +29,17 @@ class Job extends React.Component {
 
         return(
             <div className='job-container'>
-                <h4>{title}</h4><span>{location}</span>
+                <div className='job-details'>
+                    <h4>{title}</h4>
+                    <span>{location}</span>
+                    <span onClick={() => handleSave(id)} className={`job ${saveClass}`}>&#10084;</span>
+                </div>
                 <div className='job-card-details'>
                     {/* CSS grid for this part maybe 1 / 2  */}
-                    <p>Summary: {summary}</p>
-                    <p>Experience Level: {exp_level}</p>
-                    <p>Job Type: {job_type}</p>
+                    <p id='grid-1'>Summary: {summary}</p>
+                    <p id='grid-2'>Experience Level: {exp_level}</p>
+                    <p id='grid-3'>Job Type: {job_type}</p>
                 </div>
-                <span onClick={() => handleSave(id)} className={`job ${saveClass}`}>&#10084;</span>
                 <Button type='button'><Link to={`/jobs/${id}`}>More Details</Link></Button>
             </div>
         )
