@@ -8,6 +8,7 @@ class SearchRoute extends React.Component {
 
     state = {
         seeAll: false,
+        searched: false,
         results: [],
         loading: false,
     }
@@ -57,7 +58,7 @@ class SearchRoute extends React.Component {
             return (zipcodesInRadius.includes(job.zipcode.toString())) 
                 ? results.push(job)
                 : null })
-        this.setState({ results });
+        this.setState({ searched: true, results });
 
         event.target['search-title-input'].value = '';
         event.target['search-zipcode-input'].value = '';
@@ -72,7 +73,7 @@ class SearchRoute extends React.Component {
     }
 
     render() {
-        const { seeAll, results, loading } = this.state;
+        const { seeAll, results, loading, searched } = this.state;
         const { jobs } = this.context;
         return (
             <section>
@@ -86,19 +87,25 @@ class SearchRoute extends React.Component {
                     {(loading)
                         ? <img id='loading' src='https://media.giphy.com/media/KKCuBooszlPG0/giphy.gif' alt='loading search results' />
                         : <div className='jobs-container'>
-                            {(seeAll) ? (
+                            {(seeAll) 
+                                ? (
                                 jobs.map((job) => (
                                 <Job 
                                     key={job.id}
                                     {...job}
                                     />))
-                            ) : (
-                                results.map((result) => (
-                                    <Job key={result.id}
-                                    {...result} />
-                                )))
+                            ) : ((searched) && (!results.length))
+                                    ? <div>
+                                        <p>Sorry, there were no jobs matching your search terms</p>
+                                    </div>
+                                    : (
+                                        results.map((result) => (
+                                            <Job key={result.id}
+                                            {...result} />
+                                        )))
                             }
                             </div>
+                            
                     }
                 </div>
                 
