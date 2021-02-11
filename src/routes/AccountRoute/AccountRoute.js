@@ -14,6 +14,7 @@ class AccountRoute extends React.Component {
         return (
             <section>
                 <h2>Welcome to your acccount</h2>
+                <h3>Share a new job opportunity</h3>
                 <h3>You have saved these jobs:</h3>
                 {savedJobs.map((save) => <Job key={save.id} {...save} />)}
                 <Button onClick={goBack} type='button'>Go Back</Button>

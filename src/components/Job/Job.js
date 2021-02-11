@@ -42,7 +42,7 @@ class Job extends React.Component {
                     <p id='grid-2'>Experience Level: {exp_level}</p>
                     <p id='grid-3'>Job Type: {job_type}</p>
                 </div>
-                <Button type='button'><Link to={`/jobs/${id}`}>More Details</Link></Button>
+                <Button type='button'><Link to={`/jobs/${id}`}>Job Details</Link></Button>
             </div>
         )
     }
