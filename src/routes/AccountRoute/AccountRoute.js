@@ -12,6 +12,8 @@ class AccountRoute extends React.Component {
         error: null,
         reqs: [],
         req: '',
+        success: null,
+        createdJob: {},
     };
 
     static contextType = JobContext;
@@ -73,6 +75,9 @@ class AccountRoute extends React.Component {
         const job_type = event.target['new-job-type'].value;
         const salary = event.target['new-job-salary'].value;
 
+        const { reqs } = this.state;
+        const formatReqs = reqs.map((req) => ({ requirement: req }));
+
         const newJob = {
             user_id,
             title,
@@ -95,7 +100,7 @@ class AccountRoute extends React.Component {
             this.setState({ error: message });
         }
 
-        await RestApiService.addNewJob(newJob)
+        await RestApiService.addNewJob(newJob, formatReqs)
             .then((resJson) => {
                 event.target = '';
                 return this.setState({ success: true, createdJob: resJson })

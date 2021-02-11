@@ -18,7 +18,9 @@ const RestApiService = {
                 : res.json()
             );
     },
-    addNewJob(newJob) {
+    addNewJob(job, reqs) {
+      console.log(job, reqs);
+      const newJob = { ...job, ...reqs}
         return fetch(`${config.API_ENDPOINT}/jobs`, {
             method: 'POST',
             headers: {
