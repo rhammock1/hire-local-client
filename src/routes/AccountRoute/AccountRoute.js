@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../../components/Button/Button';
 import Job from '../../components/Job/Job';
+import NewJobForm from '../../components/NewJobForm/NewJobForm';
 import JobContext from '../../contexts/JobContext';
 
 class AccountRoute extends React.Component {
@@ -15,6 +16,7 @@ class AccountRoute extends React.Component {
             <section>
                 <h2>Welcome to your acccount</h2>
                 <h3>Share a new job opportunity</h3>
+                <NewJobForm />
                 <h3>You have saved these jobs:</h3>
                 {savedJobs.map((save) => <Job key={save.id} {...save} />)}
                 <Button onClick={goBack} type='button'>Go Back</Button>
