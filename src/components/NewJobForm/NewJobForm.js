@@ -3,9 +3,13 @@ import Button from '../Button/Button';
 import { Input, Label, Required } from '../Form/Form';
 
 const NewJobForm = function(props) {
+    const { user, handleNewJobSubmit, error } = props;
     return (
         <div className='form-container'>
-            <form>
+            <form onSubmit={(event) => handleNewJobSubmit(event, user) }>
+            <div role='alert'>
+                {error && <p>{error}</p>}
+            </div>
                 <fieldset>
                     <legend>New Job</legend>
                     <div className='form-group'>
@@ -26,14 +30,14 @@ const NewJobForm = function(props) {
                     </div>
                     <div className='form-group'>
                         <Label htmlFor='new-job-zipcode'>ZIP Code:<Required /> </Label>
-                        <Input type='number' id='new-job-zipcode' name='new-job-zipcode' required />
+                        <Input type='number' id='new-job-zipcode' pattern='^\d{5}$' name='new-job-zipcode' required />
                     </div>
                     <div className='form-group'>
                         <Label htmlFor='new-job-contact'>Job Contact Email:<Required /> </Label>
                         <Input id='new-job-contact' name='new-job-contact' required />
                     </div>
                     <div className='form-group'>
-                        <Label htmlFor='new-job-exp'>Experience:</Label>
+                        <Label htmlFor='new-job-exp'>Experience:<Required /></Label>
                         <select id='new-job-exp' name='new-job-exp'>
                             <option value=''>Please Choose</option>
                             <option value='entry'>Entry Level</option>
@@ -42,7 +46,7 @@ const NewJobForm = function(props) {
                         </select>
                     </div>
                     <div className='form-group'>
-                        <Label htmlFor='new-job-type'>Job Type:</Label>
+                        <Label htmlFor='new-job-type'>Job Type:<Required /></Label>
                         <select id='new-job-type' name='new-job-type'>
                             <option value=''>Please Choose</option>
                             <option value='full-time'>Full Time</option>
@@ -53,7 +57,7 @@ const NewJobForm = function(props) {
                         </select>
                     </div>
                     <div className='form-group'>
-                        <Label htmlFor='new-job-salary'>Salary: </Label>
+                        <Label htmlFor='new-job-salary'>Salary:</Label>
                         <Input id='new-job-salary' name='new-job-salary' />
                     </div>
                     <Button type='submit'>Submit Job</Button>
