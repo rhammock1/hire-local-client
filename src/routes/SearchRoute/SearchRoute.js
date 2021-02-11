@@ -49,8 +49,8 @@ class SearchRoute extends React.Component {
         // Split title variable at the spaces to identify keywords
         let keywords = title.split(' ');
         // search jobs for job titles with matching keywords
-        const matchingJobs = jobs.map((job) => (job.title.toLowerCase().includes(keywords)) ? job : null)
-
+        const matchingJobs = jobs.filter((job) => (job.title.toLowerCase().includes(keywords)) ? job : null)
+        
         // Check if matchingJobs contains the zipcodesInRadius
         let results = [];
         matchingJobs.map((job) => {

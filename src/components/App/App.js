@@ -49,6 +49,16 @@ export default class App extends Component {
       .catch((error) => this.setState({ error, hasError: true }));
   }
 
+  getSavedJobs = () => {
+    const { userSaves, jobs } = this.state;
+    const savedJobIds = userSaves.map((save) => save.job_id);
+    
+    const savedJobs = jobs.filter((job) => savedJobIds.includes(job.id))
+    
+    return savedJobs;
+
+  }
+
   checkForDuplicateSaves = (userSaves, job_id) => {
     let duplicate
 
@@ -106,6 +116,7 @@ export default class App extends Component {
       userSaves,
       handleSave: this.handleSave,
       getUserSaves: this.getUserSaves,
+      getSavedJobs: this.getSavedJobs,
     }
     return (
       <div className='App'>
