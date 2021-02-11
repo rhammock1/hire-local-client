@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from '../Button/Button';
 
 const JobDetails = function(props) {
     const {
@@ -30,6 +32,7 @@ const JobDetails = function(props) {
             <div>
                 <p>Interested in Applying? Email your resume to the Hiring Manager at {contact}</p>
             </div>
+            <Button type='button'><Link to='/'>Go Back</Link></Button>
         </div>
     )
 }

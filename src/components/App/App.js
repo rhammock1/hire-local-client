@@ -12,6 +12,7 @@ import UserContext from '../../contexts/UserContext';
 import JobContext from '../../contexts/JobContext';
 import './App.css';
 import JobRoute from '../../routes/JobRoute/JobRoute';
+import AccountRoute from '../../routes/AccountRoute/AccountRoute';
 
 export default class App extends Component {
   state = {
@@ -123,6 +124,10 @@ export default class App extends Component {
               <PrivateRoute
                 path={'/jobs/:jobId'}
                 component={JobRoute}
+              />
+              <PrivateRoute
+                path={'/user/:userId'}
+                component={AccountRoute}
               />
               <PublicOnlyRoute
                 path={'/register'}

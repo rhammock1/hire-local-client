@@ -36,10 +36,17 @@ class JobRoute extends React.Component {
 
     render() {
         const { job } = this.state;
-
+        const { userSaves, handleSave } = this.context;
+        let saveClass;
+        userSaves.map((save) => {
+            if (save.job_id === job.id) {
+                saveClass = 'job-saved'
+            }
+            return saveClass;
+        })
         return (
             <section>
-                <h2>{job.title}</h2>
+                <h2>{job.title}</h2><span onClick={() => handleSave(job.id)} className={`job ${saveClass}`}>&#10084;</span>
                 <JobDetails {...job} />
             </section>
         )
