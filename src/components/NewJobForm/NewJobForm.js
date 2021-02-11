@@ -3,7 +3,7 @@ import Button from '../Button/Button';
 import { Input, Label, Required } from '../Form/Form';
 
 const NewJobForm = function(props) {
-    const { user, handleNewJobSubmit, error, handleAddReqs, reqs, handleReqChange } = props;
+    const { user, handleNewJobSubmit, error, handleAddReqs, reqs, handleReqChange, removeReq } = props;
     console.log(reqs);
     return (
         <div className='form-container'>
@@ -69,6 +69,7 @@ const NewJobForm = function(props) {
                         <Label htmlFor='new-job-req'>Job Requirement:</Label>
                         <Input onChange={handleReqChange} id='new-job-req' name='new-job-req' />
                         <Button type='button' onClick={handleAddReqs}>Add Requirement</Button>
+                        <Button type='button' onClick={removeReq}>Remove Last Requirement</Button>
                     </div>
                     <Button type='submit'>Submit Job</Button>
                 </fieldset>

@@ -51,6 +51,13 @@ class AccountRoute extends React.Component {
         element.value = '';
     }
 
+    removeReq = () => {
+        const { reqs } = this.state;
+
+        reqs.pop();
+        this.setState({ reqs });
+    }
+
     handleNewJobSubmit = async (event, user) => {
         event.preventDefault();
         event.persist();
@@ -111,7 +118,7 @@ class AccountRoute extends React.Component {
                 <UserContext.Consumer>
                     {user => (
                         <NewJobForm
-                        user={user} error={error} reqs={reqs} handleReqChange={this.handleReqChange} handleAddReqs={this.handleAddReqs} handleNewJobSubmit={this.handleNewJobSubmit}/>
+                        user={user} removeReq={this.removeReq} error={error} reqs={reqs} handleReqChange={this.handleReqChange} handleAddReqs={this.handleAddReqs} handleNewJobSubmit={this.handleNewJobSubmit}/>
                     )}
                 </UserContext.Consumer>
                 
