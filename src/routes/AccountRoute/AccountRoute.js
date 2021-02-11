@@ -8,7 +8,11 @@ import RestApiService from '../../services/rest-api-service';
 
 class AccountRoute extends React.Component {
 
-    state = { error: null };
+    state = { 
+        error: null,
+        reqs: [],
+        req: '',
+    };
 
     static contextType = JobContext;
 
@@ -34,7 +38,20 @@ class AccountRoute extends React.Component {
         return {message, allGood };
     }
 
-    handleNewJobSubmit = (event, user) => {
+    handleReqChange = (event) => {
+        const req = event.target.value;
+        this.setState({ req });
+    }
+
+    handleAddReqs = () => {
+        const element = document.getElementById('new-job-req');
+        const { req, reqs } = this.state;
+        reqs.push(req);
+        this.setState({ req: '', reqs })
+        element.value = '';
+    }
+
+    handleNewJobSubmit = async (event, user) => {
         event.preventDefault();
         event.persist();
         
@@ -71,16 +88,19 @@ class AccountRoute extends React.Component {
             this.setState({ error: message });
         }
 
-        RestApiService.addNewJob(newJob)
+        await RestApiService.addNewJob(newJob)
             .then((resJson) => {
                 event.target = '';
                 return this.setState({ success: true, createdJob: resJson })
             })
             .catch((error) => this.setState({ error: error.error }))
+
+        const { getAllJobs } = this.context;
+        await getAllJobs();
     }
 
     render() {
-        const { error } = this.state;
+        const { error, reqs } = this.state;
         const { getSavedJobs } = this.context;        
         const savedJobs = getSavedJobs();
         const { goBack } = this.props.history;
@@ -91,7 +111,7 @@ class AccountRoute extends React.Component {
                 <UserContext.Consumer>
                     {user => (
                         <NewJobForm
-                        user={user} error={error} handleNewJobSubmit={this.handleNewJobSubmit}/>
+                        user={user} error={error} reqs={reqs} handleReqChange={this.handleReqChange} handleAddReqs={this.handleAddReqs} handleNewJobSubmit={this.handleNewJobSubmit}/>
                     )}
                 </UserContext.Consumer>
                 

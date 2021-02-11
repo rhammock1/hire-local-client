@@ -31,15 +31,19 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    this.getAllJobs();
+    const { user } = this.context;
+    if (user.hasOwnProperty('id')) {
+      this.getUserSaves();
+    }
+  }
+
+  getAllJobs = () => {
     RestApiService.getAllJobs()
       .then((jobs) => {
         return this.setState({ jobs: jobs.notExpired });
       })
       .catch((error) => this.setState({ hasError: true, error }));
-    const { user } = this.context;
-    if (user.hasOwnProperty('id')) {
-      this.getUserSaves();
-    }
   }
 
   getUserSaves = () => {
@@ -117,6 +121,7 @@ export default class App extends Component {
       handleSave: this.handleSave,
       getUserSaves: this.getUserSaves,
       getSavedJobs: this.getSavedJobs,
+      getAllJobs: this.getAllJobs,
     }
     return (
       <div className='App'>

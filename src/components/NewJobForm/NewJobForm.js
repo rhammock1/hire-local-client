@@ -3,7 +3,8 @@ import Button from '../Button/Button';
 import { Input, Label, Required } from '../Form/Form';
 
 const NewJobForm = function(props) {
-    const { user, handleNewJobSubmit, error } = props;
+    const { user, handleNewJobSubmit, error, handleAddReqs, reqs, handleReqChange } = props;
+    console.log(reqs);
     return (
         <div className='form-container'>
             <form onSubmit={(event) => handleNewJobSubmit(event, user) }>
@@ -59,6 +60,15 @@ const NewJobForm = function(props) {
                     <div className='form-group'>
                         <Label htmlFor='new-job-salary'>Salary:</Label>
                         <Input id='new-job-salary' name='new-job-salary' />
+                    </div>
+                    <div className='form-group'>
+                        <h4>Requirements</h4>
+                        <ul>
+                            {reqs.map((req, index) => <li key={index} >{req}</li>)}
+                        </ul>
+                        <Label htmlFor='new-job-req'>Job Requirement:</Label>
+                        <Input onChange={handleReqChange} id='new-job-req' name='new-job-req' />
+                        <Button type='button' onClick={handleAddReqs}>Add Requirement</Button>
                     </div>
                     <Button type='submit'>Submit Job</Button>
                 </fieldset>
