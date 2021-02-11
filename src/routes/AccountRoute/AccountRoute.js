@@ -14,6 +14,7 @@ class AccountRoute extends React.Component {
         req: '',
         success: null,
         createdJob: {},
+        adding: false,
     };
 
     static contextType = JobContext;
@@ -111,8 +112,16 @@ class AccountRoute extends React.Component {
         await getAllJobs();
     }
 
+    handleCloseSuccess = () => {
+        this.setState({ success: false });
+    }
+
+    startAdding = () => {
+        this.setState({ adding: true });
+    }
+
     render() {
-        const { error, reqs } = this.state;
+        const { error, reqs, success, adding } = this.state;
         const { getSavedJobs } = this.context;        
         const savedJobs = getSavedJobs();
         const { goBack } = this.props.history;
@@ -120,12 +129,24 @@ class AccountRoute extends React.Component {
             <section>
                 <h2>Welcome to your acccount</h2>
                 <h3>Share a new job opportunity</h3>
-                <UserContext.Consumer>
-                    {user => (
-                        <NewJobForm
-                        user={user} removeReq={this.removeReq} error={error} reqs={reqs} handleReqChange={this.handleReqChange} handleAddReqs={this.handleAddReqs} handleNewJobSubmit={this.handleNewJobSubmit}/>
-                    )}
-                </UserContext.Consumer>
+                {(!adding)
+                    ? <div>
+                        <p>Have a job opportunity to share?</p>
+                        <Button type='button' onClick={this.startAdding}>Get Started</Button>
+                    </div>
+                    :
+                (!success)
+                    ? <UserContext.Consumer>
+                        {user => (
+                            <NewJobForm
+                            user={user} removeReq={this.removeReq} error={error} reqs={reqs} handleReqChange={this.handleReqChange} handleAddReqs={this.handleAddReqs} handleNewJobSubmit={this.handleNewJobSubmit}/>
+                        )}
+                    </UserContext.Consumer>
+                    : <div className='success-container'>
+                        <p>Successfully added Job</p>
+                        <Button type='button' onClick={this.handleCloseSuccess}>Add Another Job</Button>
+                    </div>                    
+                }
                 
                 <h3>You have saved these jobs:</h3>
                 {savedJobs.map((save) => <Job key={save.id} {...save} />)}
