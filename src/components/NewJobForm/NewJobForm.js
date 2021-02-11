@@ -23,7 +23,7 @@ const NewJobForm = function(props) {
                     </div>
                     <div className='form-group'>
                         <Label htmlFor='new-job-description'>Job Description:<Required /> </Label>
-                        <Input id='new-job-description' name='new-job-description' required />
+                        <textarea id='new-job-description' name='new-job-description' required />
                     </div>
                     <div className='form-group'>
                         <Label htmlFor='new-job-location'>Job Location:<Required /> </Label>

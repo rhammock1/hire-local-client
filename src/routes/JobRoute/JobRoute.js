@@ -1,6 +1,7 @@
 import React from 'react';
 import JobDetails from '../../components/JobDetails/JobDetails';
 import JobContext from '../../contexts/JobContext';
+import RestApiService from '../../services/rest-api-service';
 
 class JobRoute extends React.Component {
 
@@ -12,26 +13,13 @@ class JobRoute extends React.Component {
 
     static contextType = JobContext;
 
-    async componentDidMount() {
-        let { jobs } = this.context;
-        
+    componentDidMount() {
         const { jobId } = this.props.match.params;
-        if (!jobs.length) {
-            const int = setInterval(() => {
-                jobs = this.context.jobs;
-                if(jobs.length) {
-                    clearInterval(int);
-                    const job = jobs.find((job) => job.id.toString() === jobId)
-            
-                    return this.setState({ job });
-                }
-            }, 250);
-            
-        } else {
-            const job = jobs.find((job) => job.id.toString() === jobId)
-            
-            this.setState({ job });
-        }
+        
+        RestApiService.getJobById(jobId)
+            .then((job) => this.setState({ job }))
+            .catch((error) => this.setState({ error, hasError: true }));
+       
     }
 
     render() {

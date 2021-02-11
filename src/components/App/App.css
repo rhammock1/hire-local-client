@@ -7,7 +7,7 @@
     width:max-content;
     
 }
-.Input {
+.Input, textarea, select {
     width: 95%;
     background-color: #EAEFBD;
     border: none;

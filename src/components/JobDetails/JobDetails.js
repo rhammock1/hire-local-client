@@ -7,30 +7,50 @@ const JobDetails = function(props) {
         description,
         salary,
         exp_level,
-        job_type,
+        job_type = '',
         location,
         zipcode,
-        contact
+        contact,
+        reqs = []
     } = props;
+
+    const capitalJobType = job_type.charAt(0).toUpperCase() + job_type.slice(1);
+
+    let experience = '';
+    if (exp_level === 'entry') {
+        experience = 'Entry Level';
+    } else if (exp_level === 'mid') {
+        experience = 'Mid Level';
+    } else if (exp_level === 'senior') {
+        experience = 'Senior Level';
+    }
+
     return (
         <div className='job-details-container'>
             <div>
-                <span>{location}</span>
+                <h3>{location}</h3>
                 {' '}
                 <span>ZIP Code:{zipcode}</span>
             </div>
             <div>
-                <span>Experience: {exp_level}</span>
-                <span>Job Type: {job_type}</span>
+                <h4>Experience: </h4><span>{experience}</span>
+                <h4>Job Type: </h4><span>{capitalJobType}</span>
             </div>
             <div>
-                <span>Salary: ${salary}</span>
+                <h4>Salary: </h4><span>${salary}</span>
             </div>
             <div>
-                <p>{description}</p>
+                <h4>Job Description: </h4><p>{description}</p>
             </div>
             <div>
-                <p>Interested in Applying? Email your resume to the Hiring Manager at {contact}</p>
+                <h4>Job Requirements:</h4>
+                <ul>
+                    {reqs.map((req) => <li key={req.id}>{req.requirement}</li>)}
+                </ul>
+            </div>
+            <div>
+                <h4>Interested in Applying?</h4>
+                <p>Email your resume to the Hiring Manager at <strong>{contact}</strong></p>
             </div>
             <Button type='button'><Link to='/'>Go Back</Link></Button>
         </div>

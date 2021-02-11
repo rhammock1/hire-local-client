@@ -18,6 +18,17 @@ class Job extends React.Component {
             location,
         } = this.props;
 
+        let experience = '';
+        if (exp_level === 'entry') {
+            experience = 'Entry Level';
+        } else if (exp_level === 'mid') {
+            experience = 'Mid Level';
+        } else if (exp_level === 'senior') {
+            experience = 'Senior Level';
+        }
+
+        const capitalJobType = job_type.charAt(0).toUpperCase() + job_type.slice(1);
+
         const { userSaves, handleSave } = this.context;
         let saveClass;
         userSaves.map((save) => {
@@ -26,6 +37,8 @@ class Job extends React.Component {
             }
             return saveClass;
         })
+
+
 
         return(
             <div className='job-container'>
@@ -39,8 +52,8 @@ class Job extends React.Component {
                 <div className='job-card-details'>
                     {/* CSS grid for this part maybe 1 / 2  */}
                     <p id='grid-1'>Summary: {summary}</p>
-                    <p id='grid-2'>Experience Level: {exp_level}</p>
-                    <p id='grid-3'>Job Type: {job_type}</p>
+                    <p id='grid-2'>Experience Level: {experience}</p>
+                    <p id='grid-3'>Job Type: {capitalJobType}</p>
                 </div>
                 <Button type='button'><Link to={`/jobs/${id}`}>Job Details</Link></Button>
             </div>
