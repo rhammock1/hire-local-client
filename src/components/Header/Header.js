@@ -54,6 +54,7 @@ class Header extends Component {
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
+        
       </header>
     );
   }

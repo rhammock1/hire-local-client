@@ -51,9 +51,9 @@ class Job extends React.Component {
                 </div>
                 <div className='job-card-details'>
                     {/* CSS grid for this part maybe 1 / 2  */}
-                    <p id='grid-1'>Summary: {summary}</p>
-                    <p id='grid-2'>Experience Level: {experience}</p>
-                    <p id='grid-3'>Job Type: {capitalJobType}</p>
+                    <p id='grid-1'><strong>Summary:</strong> {summary}</p>
+                    <p id='grid-2'><strong>Experience Level:</strong> {experience}</p>
+                    <p id='grid-3'><strong>Job Type:</strong> {capitalJobType}</p>
                 </div>
                 <Button type='button'><Link to={`/jobs/${id}`}>Job Details</Link></Button>
             </div>

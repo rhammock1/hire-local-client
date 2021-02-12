@@ -126,6 +126,9 @@ export default class App extends Component {
     return (
       <div className='App'>
         <Header />
+        <div className='banner-image-container'>
+          <img id='banner-image' src='https://williamsburgohio.org/wp-content/uploads/2020/02/local.jpg' alt='support local business banner' />
+        </div>
         <main>
           {hasError && (
             <p>There was an error! Oh no!</p>

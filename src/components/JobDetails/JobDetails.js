@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
+import './JobDetails.css';
 
 const JobDetails = function(props) {
     const {
@@ -27,13 +28,13 @@ const JobDetails = function(props) {
 
     return (
         <div className='job-details-container'>
-            <div>
+            <div className='job-location'>
                 <h3>{location}</h3>
-                {' '}
-                <span>ZIP Code:{zipcode}</span>
+                <span>{zipcode}</span>
             </div>
             <div>
                 <h4>Experience: </h4><span>{experience}</span>
+                <br />
                 <h4>Job Type: </h4><span>{capitalJobType}</span>
             </div>
             <div>

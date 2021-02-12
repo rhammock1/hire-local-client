@@ -1,6 +1,10 @@
 .job-saved {
     color: red;
 }
+.job-title>h4 {
+    color: #28180b;
+    font-size: 22px;
+}
 .job {
     font-size: 45px;
     position:absolute;
