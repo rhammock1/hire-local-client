@@ -4,10 +4,19 @@
     justify-content: flex-start;
     width: 75%;
 }
-#all-jobs-input {
+#all-jobs-input, #search-clt-input {
     width: min-content;
+}
+.checkbox-container {
+    display: flex;
+    width: 95%;
+    
+    justify-content: space-between;
 }
 .container {
     display:flex;
     justify-content: center;
+}
+fieldset {
+    border: none;
 }

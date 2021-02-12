@@ -21,10 +21,12 @@ footer {
     margin: 10px auto;
     padding: 5%;
     border: none;
-    background-color: #90BE6D;
-    border-radius: 10%;
+    background-color: #A0602C;
+    color: #FDFAF7;
+    border-radius: 10px;
     font-weight:600;
-    box-shadow: 1px 2px 3px #121212;
+    font-size: 16px;
+    box-shadow: 1px 2px 3px #28180B;
 
 }
 .Button:hover {

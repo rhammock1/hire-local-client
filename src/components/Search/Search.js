@@ -7,7 +7,7 @@ class Search extends React.Component {
 
     
     render() {
-        const { handleSearch } = this.props;
+        const { handleSearch, handleSeeAllJobs } = this.props;
         return (
             <div className='search-container'>
                 <form onSubmit={handleSearch}>
@@ -45,12 +45,18 @@ class Search extends React.Component {
                                 required
                             />
                         </div>
-                        <div className='form-group'>
-                            <Label htmlFor='search-clt-input'>
-                            CLT
-                            </Label>
-                            <input type='checkbox' id='search-clt-input' name='search-clt-input' />
-                        </div>
+                        <div className='form-group checkbox-container'>
+                            <div>
+                                <Label htmlFor='search-clt-input'>
+                                CLT
+                                </Label>
+                                <Input type='checkbox' id='search-clt-input' name='search-clt-input' />
+                            </div>
+                            <div>
+                                <Label htmlFor='all-jobs-input'>See all jobs</Label>
+                                <Input onChange={handleSeeAllJobs} type='checkbox' id='all-jobs-input' name='all-jobs-input' />
+                            </div>
+                            </div>
                         <Button type='submit'>Search</Button>
                     </fieldset>
                 </form>

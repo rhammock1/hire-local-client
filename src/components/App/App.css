@@ -5,13 +5,14 @@
 }
 .Label {
     width:max-content;
-    
+    color: #fdfaf7;
 }
 .Input, textarea, select {
     width: 95%;
-    background-color: #EAEFBD;
+    background-color: #D3935F;
     border: none;
     padding: 4px;
+    color: #fdfaf7
 }
 h2 {
     width: 85%;

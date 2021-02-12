@@ -1,7 +1,6 @@
 import React from 'react';
 import Search from '../../components/Search/Search';
 import Job from '../../components/Job/Job';
-import { Input, Label } from '../../components/Form/Form';
 import JobContext from '../../contexts/JobContext';
 
 class SearchRoute extends React.Component {
@@ -78,11 +77,8 @@ class SearchRoute extends React.Component {
         return (
             <section>
                 <h2>Find a job</h2>
-                <Search handleSearch={this.handleSearch} />
-                <div className='input-container'>
-                    <Label htmlFor='all-jobs-input'>See all jobs</Label>
-                    <Input onChange={this.handleSeeAllJobs} type='checkbox' id='all-jobs-input' name='all-jobs-input' />
-                </div>
+                <Search handleSeeAllJobs={this.handleSeeAllJobs} handleSearch={this.handleSearch} />
+                
                 <div className='container'>
                     {(loading)
                         ? <img id='loading' src='https://media.giphy.com/media/KKCuBooszlPG0/giphy.gif' alt='loading search results' />
