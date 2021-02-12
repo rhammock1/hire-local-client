@@ -10,7 +10,9 @@ section>p {
     margin-bottom: 10px;
 }
 form>div {
-    width: 75%;
+    width: 85%;
+    margin:auto;
+    
 }
 footer {
     display: flex;

@@ -11,7 +11,7 @@ h4 {
     color:#fdfaf7;
 }
 .Input, textarea, select {
-    width: 95%;
+    width: 100%;
     background-color: #D3935F;
     border: none;
     padding: 4px;

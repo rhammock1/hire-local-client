@@ -9,7 +9,7 @@
 }
 .checkbox-container {
     display: flex;
-    width: 95%;
+    width: 100%;
     
     justify-content: space-between;
 }

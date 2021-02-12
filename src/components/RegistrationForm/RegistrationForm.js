@@ -38,9 +38,10 @@ class RegistrationForm extends Component {
   }
 
   render() {
-    const { error } = this.state
+    const { error } = this.state;
+    const { handleUploadChange } = this.props;
     return (
-      <form
+      <form id='registration'
         onSubmit={this.handleSubmit}
       >
         <div role='alert'>
@@ -77,6 +78,10 @@ class RegistrationForm extends Component {
             type='password'
             required
           />
+        </div>
+        <div>
+          <Label htmlFor='resumePDF'>Upload a resume(.pdf): </Label>
+          <Input onChange={handleUploadChange} id='resumePDF' name='resumePDF' type='file' />
         </div>
         <footer>
           <Button type='submit'>

@@ -8,6 +8,17 @@ class RegistrationRoute extends Component {
     },
   }
 
+  state = {
+    formData: {}
+  }
+
+  handleUploadChange = (event) => {
+    const resume = event.target.files[0];
+    let formData = new FormData();
+    formData.append('resumePDF', resume);
+    this.setState({ formData });
+    console.log(formData);
+  }
 
   handleRegistrationSuccess = async () => {
     const { location, history } = this.props
@@ -23,6 +34,7 @@ class RegistrationRoute extends Component {
         </p>
         <h2>Sign up</h2>
         <RegistrationForm
+          handleUploadChange={this.handleUploadChange}
           onRegistrationSuccess={this.handleRegistrationSuccess}
         />
       </section>
