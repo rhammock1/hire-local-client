@@ -21,6 +21,8 @@ export default class App extends Component {
     jobs: [],
     userSaves: [],
     duplicate: {},
+    resume: null,
+    fileURL: null,
   }
 
   static contextType = UserContext;
@@ -35,6 +37,7 @@ export default class App extends Component {
     const { user } = this.context;
     if (user.hasOwnProperty('id')) {
       this.getUserSaves();
+      this.getUserResume();
     }
   }
 
@@ -51,6 +54,35 @@ export default class App extends Component {
     RestApiService.getUserSaves(user.id)
       .then((saves) => this.setState({ userSaves: saves.saves }))
       .catch((error) => this.setState({ error, hasError: true }));
+  }
+
+  getUserResume = () => {
+    const { user } = this.context;
+    return RestApiService.getResume(user.id)
+      .then((file) => {
+        console.log(file);
+        if (!file) {
+
+          this.setState({ resume: null })
+          return false
+        }
+        const fileURL = URL.createObjectURL(file);
+        this.setState({ resume: file, fileURL });
+        return true
+      })
+      .catch((error) => {
+        if (error.error !== 'No resume found for the selected user') {
+          this.setState({ error, hasError: true });
+        }
+      });
+  }
+
+  openResumeInNewPage = () => {
+    const { fileURL, resume } = this.state;
+    if (!fileURL || !resume) {
+      return false;
+    }
+    window.open(fileURL);
   }
 
   getSavedJobs = () => {
@@ -114,7 +146,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { hasError, jobs, userSaves } = this.state
+    const { hasError, jobs, userSaves, error } = this.state
     const value = {
       jobs,
       userSaves,
@@ -122,6 +154,9 @@ export default class App extends Component {
       getUserSaves: this.getUserSaves,
       getSavedJobs: this.getSavedJobs,
       getAllJobs: this.getAllJobs,
+      getUserResume: this.getUserResume,
+      openResume: this.openResumeInNewPage,
+      error: error,
     }
     return (
       <div className='App'>

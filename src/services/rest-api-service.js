@@ -10,6 +10,20 @@ const RestApiService = {
                 : res.json()
             );
     },
+    getResume(userId) {
+      return fetch(`${config.API_ENDPOINT}/resume/${userId}`, {
+        method: 'GET',
+        headers: {
+          'authorization': `Bearer ${TokenService.getAuthToken()}`,
+          
+        },
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.blob()
+        );
+    },
     postResume(resume, userId) {
       return fetch(`${config.API_ENDPOINT}/resume/${userId}`, {
         method: 'POST',
