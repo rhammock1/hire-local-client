@@ -56,11 +56,11 @@ export default class App extends Component {
       .catch((error) => this.setState({ error, hasError: true }));
   }
 
-  getUserResume = () => {
+  getUserResume = (userId) => {
     const { user } = this.context;
-    return RestApiService.getResume(user.id)
+    const id = userId || user.id
+    return RestApiService.getResume(id)
       .then((file) => {
-        console.log(file);
         if (!file) {
 
           this.setState({ resume: null })
@@ -145,6 +145,10 @@ export default class App extends Component {
     }
   }
 
+  handleError = (error) => {
+    this.setState({ error, hasError: true });
+  }
+
   render() {
     const { hasError, jobs, userSaves, error } = this.state
     const value = {
@@ -157,6 +161,7 @@ export default class App extends Component {
       getUserResume: this.getUserResume,
       openResume: this.openResumeInNewPage,
       error: error,
+      handleError: this.handleError,
     }
     return (
       <div className='App'>

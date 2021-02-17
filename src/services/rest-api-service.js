@@ -28,7 +28,6 @@ const RestApiService = {
       return fetch(`${config.API_ENDPOINT}/resume/${userId}`, {
         method: 'POST',
         headers: {
-          'content-type': 'multipart/form-data',
           'authorization': `Bearer ${TokenService.getAuthToken()}`,
         },
         body: resume,

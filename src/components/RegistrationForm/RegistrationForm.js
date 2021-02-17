@@ -5,6 +5,7 @@ import AuthApiService from '../../services/auth-api-service'
 import Button from '../Button/Button'
 import './RegistrationForm.css'
 import UserContext from '../../contexts/UserContext'
+import RestApiService from '../../services/rest-api-service'
 
 class RegistrationForm extends Component {
   static defaultProps = {
@@ -17,33 +18,51 @@ class RegistrationForm extends Component {
 
   firstInput = React.createRef()
 
-  handleSubmit = ev => {
+  handleSubmit = async (ev) => {
     ev.preventDefault()
-    const { name, username, password } = ev.target
-    AuthApiService.postUser({
+    const { name, username, password } = ev.target;
+    const { handleError, getUserResume, formData } = this.props;
+    let userId;
+
+    await AuthApiService.postUser({
       name: name.value,
       username: username.value,
       password: password.value,
     })
-      .then(() => {
-        AuthApiService.postLogin({
-          username: username.value,
-          password: password.value,
-        })
-          .then((res) => this.context.processLogin(res.authToken))
-          .catch((res) => {
-            this.setState({ error: res.error })
-          })
-      })
-      .then(() => {
-        name.value = ''
-        username.value = ''
-        password.value = ''
-        this.props.onRegistrationSuccess()
+      .then((res) => {
+        userId = res.id;
       })
       .catch(res => {
         this.setState({ error: res.error })
       })
+
+    if(formData) {
+      await RestApiService.postResume(formData, userId)
+      .then(() => {
+        this.props.onRegistrationSuccess()
+      })
+      .catch((error) => {
+        handleError(error);
+      })
+    }
+    await AuthApiService.postLogin({
+      username: username.value,
+      password: password.value,
+    })
+      .then((res) => {
+        name.value = '';
+        username.value = '';
+        password.value = '';
+        if(formData) {
+          getUserResume(userId);
+        }
+        this.context.processLogin(res.authToken);
+      })
+      .catch((res) => {
+        handleError(res);
+      })
+
+      
   }
 
   componentDidMount() {
