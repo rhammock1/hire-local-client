@@ -6,6 +6,11 @@ const JobContext = React.createContext({
     handleSave: () => {},
     getUserSaves: () => {},
     getSavedJobs: () => {},
+    getAllJobs: () => {},
+    getUserResume: () => {},
+    openResume: () => {},
+    error: null,
+    handleError: () => {},
 })
 
 export default JobContext;

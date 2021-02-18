@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../../components/Button/Button';
+import { Input, Label } from '../../components/Form/Form';
 import Job from '../../components/Job/Job';
 import NewJobForm from '../../components/NewJobForm/NewJobForm';
 import JobContext from '../../contexts/JobContext';
@@ -16,9 +17,18 @@ class AccountRoute extends React.Component {
         createdJob: {},
         resume: false,
         view: null,
+        formData: {},
+        upload: false,
     };
 
     static contextType = JobContext;
+
+    handleUploadChange = (event) => {
+        const resume = event.target.files[0];
+        let formData = new FormData();
+        formData.append('resumePDF', resume);
+        this.setState({ formData });
+      }
     
     componentDidMount() {
         const { getUserResume } = this.context;
@@ -136,8 +146,28 @@ class AccountRoute extends React.Component {
 
     }
 
+    handleUploadView = () => {
+        this.setState({ upload: true });
+    }
+
+    handleSubmitUpload = async () => {
+        const { formData } = this.state;
+        const { handleError, getUserResume } = this.context;
+        const { userId } = this.props.match.params;
+        await RestApiService.postResume(formData, userId)
+            .then(() => {
+                this.setState({ upload: false });
+            })
+            .catch((error) => {
+                handleError(error);
+            })
+        await getUserResume()
+            .then(() => this.setState({ resume: true }))
+            .catch((error) => this.setState({ stateError: error }))
+    }
+
     render() {
-        const { stateError, reqs, success, resume, view } = this.state;
+        const { stateError, reqs, success, resume, view, upload } = this.state;
         const { getSavedJobs, openResume, error } = this.context;        
         const savedJobs = getSavedJobs();
         const { goBack } = this.props.history;
@@ -149,7 +179,15 @@ class AccountRoute extends React.Component {
                 <div className='button-container'>
                     <Button onClick={this.handleView} name='opportunity' type='button'>Share a job opportunity</Button>
                     <Button onClick={this.handleView} name='saved' type='button'>See your saved jobs</Button>
-                    {((resume) && (error === null)) ? <Button type='button' onClick={openResume}>View your resume</Button> : <Button type='button'>Upload Resume</Button>}
+                    {((resume) && (error === null)) 
+                        ? <Button type='button' onClick={openResume}>View your resume</Button> 
+                        : (!upload)
+                            ? <Button onClick={this.handleUploadView}type='button'>Upload a resume</Button>
+                            : <div className='form-group'>
+                                <Label html='upload-resume'>Upload a new resume</Label>
+                                <Input onChange={this.handleUploadChange} type='file' id='upload-resume' name='upload-resume'/>
+                                <Button onClick={this.handleSubmitUpload} type='button'>Submit</Button>
+                            </div>}
                 </div>
                 {(!view)
                     ? null
