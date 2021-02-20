@@ -38,6 +38,34 @@ const RestApiService = {
             : res.json()
         );
     },
+    deleteResume(userId) {
+      return fetch(`${config.API_ENDPOINT}/resume/${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'authorization': `Bearer ${TokenService.getAuthToken()}`,
+          
+        },
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res
+        );
+    },
+    patchResume(resume, userId) {
+      return fetch(`${config.API_ENDPOINT}/resume/${userId}`, {
+        method: 'PATCH',
+        headers: {
+          'authorization': `Bearer ${TokenService.getAuthToken()}`,
+        },
+        body: resume,
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json()
+        );
+    },
     getJobById(job_id) {
         return fetch(`${config.API_ENDPOINT}/jobs/${job_id}`)
             .then(res =>
