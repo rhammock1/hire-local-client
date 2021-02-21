@@ -224,12 +224,14 @@ class AccountRoute extends React.Component {
                     : (view === 'opportunity')
                         ?
                             (!success)
-                                ? <UserContext.Consumer>
+                                ? <>
+                                <h3>New awesome job opportunity</h3>
+                                <UserContext.Consumer>
                                     {user => (
                                         <NewJobForm
                                         user={user} removeReq={this.removeReq} error={stateError} reqs={reqs} handleReqChange={this.handleReqChange} handleAddReqs={this.handleAddReqs} handleNewJobSubmit={this.handleNewJobSubmit}/>
                                     )}
-                                </UserContext.Consumer>
+                                </UserContext.Consumer></>
                                 : <div className='success-container'>
                                     <p>Successfully added Job</p>
                                     <Button type='button' onClick={this.handleCloseSuccess}>Add Another Job</Button>
