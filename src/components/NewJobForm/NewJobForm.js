@@ -18,6 +18,10 @@ const NewJobForm = function(props) {
                         <Input id='new-job-title' name='new-job-title' required />
                     </div>
                     <div className='form-group'>
+                        <Label htmlFor='new-job-company'>Company:<Required /> </Label>
+                        <Input id='new-job-company' name='new-job-company' required />
+                    </div>
+                    <div className='form-group'>
                         <Label htmlFor='new-job-summary'>Job Summary:<Required /> </Label>
                         <Input id='new-job-summary' name='new-job-summary' required />
                     </div>

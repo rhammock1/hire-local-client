@@ -92,6 +92,7 @@ class AccountRoute extends React.Component {
         
         const user_id = user.user.id;
         const title = event.target['new-job-title'].value;
+        const company = event.target['new-job-company'].value;
         const summary = event.target['new-job-summary'].value;
         const description = event.target['new-job-description'].value;
         const location = event.target['new-job-location'].value;
@@ -108,6 +109,7 @@ class AccountRoute extends React.Component {
             user_id,
             title,
             summary,
+            company,
             description,
             location,
             zipcode,
@@ -168,11 +170,12 @@ class AccountRoute extends React.Component {
 
     handlePatchResume = () => {
         const { formData } = this.state;
-        const { handleError } = this.context;
+        const { handleError, getUserResume } = this.context;
         const { userId } = this.props.match.params;
         RestApiService.patchResume(formData, userId)
-            .then(() => this.setState({ upload: false, success: true }))
+            .then(() => this.setState({ upload: false }))
             .catch((error) => handleError(error));
+        getUserResume(userId);
     }
 
     handleDeleteResume = () => {
