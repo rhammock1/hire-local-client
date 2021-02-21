@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '../../components/Button/Button';
-import { Input, Label } from '../../components/Form/Form';
 import Job from '../../components/Job/Job';
 import NewJobForm from '../../components/NewJobForm/NewJobForm';
+import NewResume from '../../components/NewResume/NewResume';
 import JobContext from '../../contexts/JobContext';
 import UserContext from '../../contexts/UserContext';
 import RestApiService from '../../services/rest-api-service';
@@ -166,6 +166,28 @@ class AccountRoute extends React.Component {
             .catch((error) => this.setState({ stateError: error }))
     }
 
+    handlePatchResume = () => {
+        const { formData } = this.state;
+        const { handleError } = this.context;
+        const { userId } = this.props.match.params;
+        RestApiService.patchResume(formData, userId)
+            .then(() => this.setState({ upload: false, success: true }))
+            .catch((error) => handleError(error));
+    }
+
+    handleDeleteResume = () => {
+        const { userId } = this.props.match.params;
+        const { handleError } = this.context;
+        RestApiService.deleteResume(userId)
+            .then(() => {
+                if (this.state.upload) {
+                    this.setState({ upload: false });
+                }
+                return this.setState({ resume: false })
+            })
+            .catch((error) => handleError(error));
+    }
+
     render() {
         const { stateError, reqs, success, resume, view, upload } = this.state;
         const { getSavedJobs, openResume, error } = this.context;        
@@ -180,14 +202,22 @@ class AccountRoute extends React.Component {
                     <Button onClick={this.handleView} name='opportunity' type='button'>Share a job opportunity</Button>
                     <Button onClick={this.handleView} name='saved' type='button'>See your saved jobs</Button>
                     {((resume) && (error === null)) 
-                        ? <Button type='button' onClick={openResume}>View your resume</Button> 
+                        ? <div className='resume-buttons'>
+                            <Button type='button' onClick={openResume}>View resume</Button>
+                            <Button type='button' onClick={this.handleUploadView}>Update resume</Button>
+                            {(upload) ? <NewResume
+                                patch={true}
+                                handlePatchResume={this.handlePatchResume}
+                                handleUploadChange={this.handleUploadChange} />
+                            : null}
+                            <Button type='button' onClick={this.handleDeleteResume}>Delete resume</Button>
+                        </div>
                         : (!upload)
                             ? <Button onClick={this.handleUploadView}type='button'>Upload a resume</Button>
-                            : <div className='form-group'>
-                                <Label html='upload-resume'>Upload a new resume</Label>
-                                <Input onChange={this.handleUploadChange} type='file' id='upload-resume' name='upload-resume'/>
-                                <Button onClick={this.handleSubmitUpload} type='button'>Submit</Button>
-                            </div>}
+                            : <NewResume
+                                patch={false}
+                                handleSubmitUpload={this.handleSubmitUpload}
+                                handleUploadChange={this.handleUploadChange} />}
                 </div>
                 {(!view)
                     ? null

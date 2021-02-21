@@ -146,6 +146,7 @@ export default class App extends Component {
   }
 
   handleError = (error) => {
+    console.error(error);
     this.setState({ error, hasError: true });
   }
 
