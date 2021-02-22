@@ -54,7 +54,7 @@ class RegistrationForm extends Component {
         username.value = '';
         password.value = '';
         if(formData) {
-          getUserResume(userId);
+          getUserResume();
         }
         this.context.processLogin(res.authToken);
       })

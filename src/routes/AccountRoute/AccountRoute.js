@@ -30,18 +30,16 @@ class AccountRoute extends React.Component {
         this.setState({ formData });
       }
     
-    componentDidMount() {
+    async componentDidMount() {
         const { getUserResume } = this.context;
-        getUserResume()
-            .then((res) => {
-                if(!res) {
-                    return this.setState({ resume: false })
-                }
-                return this.setState({ resume: true });
-                
-                
-            })
-            .catch((error) => this.setState({ stateError: error }));
+        const resume = await getUserResume();
+
+        if (!resume) {
+            this.setState({ resume: false });
+        } else {
+            this.setState({ resume: true });
+        }
+        
     }
 
     validateEmail = (email) => {
@@ -178,7 +176,7 @@ class AccountRoute extends React.Component {
         RestApiService.patchResume(formData, userId)
             .then(() => this.setState({ upload: false }))
             .catch((error) => handleError(error));
-        getUserResume(userId);
+        getUserResume();
     }
 
     handleDeleteResume = () => {

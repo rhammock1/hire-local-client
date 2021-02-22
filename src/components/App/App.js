@@ -65,10 +65,10 @@ export default class App extends Component {
       .catch((error) => this.setState({ error, hasError: true }));
   }
 
-  getUserResume = (userId) => {
+  getUserResume = () => {
     const { user } = this.context;
-    const id = userId || user.id
-    return RestApiService.getResume(id)
+    
+    return RestApiService.getResume(user.id)
       .then((file) => {
         if (!file) {
 
