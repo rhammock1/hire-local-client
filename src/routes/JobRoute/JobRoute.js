@@ -48,7 +48,7 @@ class JobRoute extends React.Component {
     }
 
     render() {
-        const { job } = this.state;
+        const { job, success } = this.state;
         const { userSaves, handleSave } = this.context;
         let saveClass;
         userSaves.map((save) => {
@@ -64,6 +64,7 @@ class JobRoute extends React.Component {
                     {user => {
                         return <JobDetails
                             {...job}
+                            success={success}
                             userId={user.user.id}
                             handleUploadChange={this.handleUploadChange}
                             handleApplyForJob={this.handleApplyForJob}

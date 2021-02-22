@@ -18,6 +18,7 @@ const JobDetails = function(props) {
         handleUploadChange,
         handleApplyForJob,
         userId,
+        success,
     } = props;
     console.log('line21', userId);
     const capitalJobType = job_type.charAt(0).toUpperCase() + job_type.slice(1);
@@ -58,11 +59,23 @@ const JobDetails = function(props) {
                 </ul>
             </div>
             <div>
-                <h4>Interested in Applying?</h4>
-                <p>Email your resume to the Hiring Manager at <strong>{contact}</strong></p>
-                <Label htmlFor='coverLetter'>Upload coverLetter (optional)</Label>
-                <Input onChange={handleUploadChange} type='file' id='coverLetter' name='coverLetter' />
-                <Button onClick={() => handleApplyForJob(userId)} type='button'>Apply</Button>
+                {
+                    (success)
+                        ? <>
+                            <h4>Successfully applied for job</h4>
+                            <img id='the-office' name='the-office' src='https://media.giphy.com/media/KYElw07kzDspaBOwf9/giphy.gif' alt='successfuly applied for the job' />
+                            <p>Be sure to keep an eye on your email for a response from the hiring manager! Good Luck!</p>
+                        </>
+                        : <>
+                            <h4>Interested in Applying?</h4>
+                            <p>Email your resume to the Hiring Manager at <strong>{contact}</strong></p>
+                            <p>-OR-</p>
+                            <Label htmlFor='coverLetter'>Upload cover letter (optional)</Label>
+                            <Input onChange={handleUploadChange} type='file' id='coverLetter' name='coverLetter' />
+                            <Button onClick={() => handleApplyForJob(userId)} type='button'>Apply now</Button>
+                            <p>Clicking the Apply Now button will send your resume (and optional cover letter) to <strong>{contact}</strong></p>
+                        </>
+                }
             </div>
             <Button type='button'><Link to='/'>Go Back</Link></Button>
         </div>
