@@ -204,24 +204,25 @@ class AccountRoute extends React.Component {
                 
                 <h3>What would you like to do?</h3>
                 <div className='button-container'>
-                    <Button onClick={this.handleView} name='opportunity' type='button'>Share a job opportunity</Button>
-                    <Button onClick={this.handleView} name='saved' type='button'>See your saved jobs</Button>
-                    <Button onClick={this.handleView} name='applied' type='button'>See your applied jobs</Button>
+                    <Button onClick={this.handleView} id='opportunity' name='opportunity' type='button'>Share a job opportunity</Button>
+                    <Button onClick={this.handleView} id='saved' name='saved' type='button'>See your saved jobs</Button>
+                    <Button onClick={this.handleView} id='applied' name='applied' type='button'>See your applied jobs</Button>
                     {((resume) && (error === null)) 
                         ? <div className='resume-buttons'>
-                            <Button type='button' onClick={openResume}>View resume</Button>
-                            <Button type='button' onClick={this.handleUploadView}>Update resume</Button>
-                            {(upload) ? <NewResume
+                            <Button id='view-resume' type='button' onClick={openResume}>View resume</Button>
+                            {(!upload) ? <Button id='update-resume' type='button' onClick={this.handleUploadView}>Update resume</Button> : null}
+                            {(upload) 
+                                ? <NewResume
                                 patch={true}
                                 handlePatchResume={this.handlePatchResume}
                                 handleUploadChange={this.handleUploadChange} />
-                            : null}
-                            <Button type='button' onClick={this.handleDeleteResume}>Delete resume</Button>
+                                : null}
+                            <Button id='delete-resume' type='button' onClick={this.handleDeleteResume}>Delete resume</Button>
                         </div>
                         : (!upload)
-                            ? <Button onClick={this.handleUploadView}type='button'>Upload a resume</Button>
+                            ? <div className='resume-buttons'><Button id='upload-resume' onClick={this.handleUploadView}type='button'>Upload a resume</Button></div>
                             : <NewResume
-                                patch={false}
+                                patch={false}auto
                                 handleSubmitUpload={this.handleSubmitUpload}
                                 handleUploadChange={this.handleUploadChange} />}
                 </div>

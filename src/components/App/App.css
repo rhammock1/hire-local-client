@@ -10,9 +10,33 @@
 h4 {
     color:#fdfaf7;
 }
+textarea {
+    resize: vertical;
+}
+/* .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} */
+fieldset {
+    display: flex;
+    flex-direction: column;
+
+}
+fieldset>.Button {
+    align-self: flex-end;
+    margin: 0;
+}
+aside {
+    background-color: #D3935F;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 14px;
+    margin: 3px 3px;
+}
 .Input, textarea, select {
     width: 100%;
-    resize: vertical;
+    
     background-color: #D3935F;
     border: none;
     padding: 4px;
@@ -22,4 +46,48 @@ h2 {
     width: 85%;
     margin: auto;
     margin-bottom: 10px;
+}
+.button-container {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+}
+.resume-buttons>.form-group {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+}
+#applied {
+    grid-column: 1 / 3;
+}
+.button-container>.form-group, .resume-buttons {
+    height:fit-content;
+    width: 100%;
+    grid-auto-flow: column;
+    grid-column: 1 / 3;
+    
+    grid-row: 3 / 4;
+
+}
+.resume-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+}
+
+.button-container>.form-group>label, .resume-buttons>.form-group>label {
+    color:#28180B;
+    width: 100%;
+    font-size: 14px;
+}
+
+#update-resume {
+    grid-column: 2 / 3;
+}
+#delete-resume {
+    grid-column: 3 / 4;
+}
+#upload-resume {
+    grid-column: 1 / 4;
 }

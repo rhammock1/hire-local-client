@@ -20,6 +20,7 @@ footer {
 }
 .Button {
     width: fit-content;
+    height:max-content;
     margin: 10px auto;
     padding: 5%;
     border: none;
