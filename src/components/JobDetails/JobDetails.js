@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
+import { Input, Label } from '../Form/Form';
 import './JobDetails.css';
 
 const JobDetails = function(props) {
@@ -8,11 +9,15 @@ const JobDetails = function(props) {
         description,
         salary,
         exp_level,
+        company,
         job_type = '',
         location,
         zipcode,
         contact,
-        reqs = []
+        reqs = [],
+        handleUploadChange,
+        handleApplyForJob,
+        userId,
     } = props;
 
     const capitalJobType = job_type.charAt(0).toUpperCase() + job_type.slice(1);
@@ -33,15 +38,18 @@ const JobDetails = function(props) {
                 <span>{zipcode}</span>
             </div>
             <div>
+                <h4>Company: </h4><span>{company}</span>
+                <br />
                 <h4>Experience: </h4><span>{experience}</span>
                 <br />
                 <h4>Job Type: </h4><span>{capitalJobType}</span>
-            </div>
-            <div>
+                <br />
                 <h4>Salary: </h4><span>${salary}</span>
+                <br />
             </div>
             <div>
-                <h4>Job Description: </h4><p>{description}</p>
+                <h4>Job Description: </h4>
+                <p>{description}</p>
             </div>
             <div>
                 <h4>Job Requirements:</h4>
@@ -52,6 +60,9 @@ const JobDetails = function(props) {
             <div>
                 <h4>Interested in Applying?</h4>
                 <p>Email your resume to the Hiring Manager at <strong>{contact}</strong></p>
+                <Label htmlFor='coverLetter'>Upload coverLetter (optional)</Label>
+                <Input onChange={handleUploadChange} type='file' id='coverLetter' name='coverLetter' />
+                <Button onClick={() => handleApplyForJob(userId)} type='button'>Apply</Button>
             </div>
             <Button type='button'><Link to='/'>Go Back</Link></Button>
         </div>

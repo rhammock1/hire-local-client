@@ -137,8 +137,22 @@ const RestApiService = {
                 ? res.json().then(e => Promise.reject(e))
                 : res
             );
-    }
+    },
 
+    postApplyJob(jobObj, userId) {
+      return fetch(`${config.API_ENDPOINT}/apply/${userId}`, {
+        method: 'POST',
+        headers: {
+          'authorization': `Bearer ${TokenService.getAuthToken()}`,
+        },
+        body: jobObj,
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json()
+        );
+    },
 }
 
 export default RestApiService;
