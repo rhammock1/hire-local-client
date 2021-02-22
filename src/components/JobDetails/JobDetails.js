@@ -63,7 +63,7 @@ const JobDetails = function(props) {
                     (success)
                         ? <>
                             <h4>Successfully applied for job</h4>
-                            <img id='the-office' name='the-office' src='https://media.giphy.com/media/KYElw07kzDspaBOwf9/giphy.gif' alt='successfuly applied for the job' />
+                            
                             <p>Be sure to keep an eye on your email for a response from the hiring manager! Good Luck!</p>
                         </>
                         : <>
