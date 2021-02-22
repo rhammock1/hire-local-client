@@ -139,13 +139,14 @@ const RestApiService = {
             );
     },
 
-    postApplyJob(jobObj, userId) {
+    postApplyJob(formData, userId) {
+      console.log(formData)
       return fetch(`${config.API_ENDPOINT}/apply/${userId}`, {
         method: 'POST',
         headers: {
           'authorization': `Bearer ${TokenService.getAuthToken()}`,
         },
-        body: jobObj,
+        body: formData,
       })
         .then(res =>
           (!res.ok)

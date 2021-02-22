@@ -19,7 +19,7 @@ const JobDetails = function(props) {
         handleApplyForJob,
         userId,
     } = props;
-
+    console.log('line21', userId);
     const capitalJobType = job_type.charAt(0).toUpperCase() + job_type.slice(1);
 
     let experience = '';
