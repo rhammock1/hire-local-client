@@ -12,16 +12,21 @@ class JobRoute extends React.Component {
         job: {},
         formData: {},
         success: false,
+        resume: {},
     }
 
     static contextType = JobContext;
 
-    componentDidMount() {
+    async componentDidMount() {
         const { jobId } = this.props.match.params;
-        
-        RestApiService.getJobById(jobId)
+        const { getUserResume } = this.context;
+
+        await RestApiService.getJobById(jobId)
             .then((job) => this.setState({ job }))
             .catch((error) => this.setState({ error, hasError: true }));
+
+        const resume = await getUserResume();
+        this.setState({ resume });
        
     }
 
@@ -33,22 +38,26 @@ class JobRoute extends React.Component {
     }
 
     handleApplyForJob = (userId) => {
-        console.log(userId);
-        const { formData } = this.state;
-        const { jobId } = this.props.match.params;
-        console.log(jobId);
+        let { formData } = this.state;
         const { handleError } = this.context;
-        formData.append('jobId', jobId);
+        const { jobId } = this.props.match.params;
         
+        if (Object.entries(formData).length === 0) {
+            formData = new FormData();
+            
+        }
+        
+        formData.append('jobId', jobId);
         RestApiService.postApplyJob(formData, userId)
-            .then(() => {
-                return this.setState({ success: true })
-            })
-            .catch((error) => handleError(error));
+                .then(() => {
+                    return this.setState({ success: true })
+                })
+                .catch((error) => handleError(error));
+
     }
 
     render() {
-        const { job, success } = this.state;
+        const { job, success, resume } = this.state;
         const { userSaves, handleSave } = this.context;
         let saveClass;
         userSaves.map((save) => {
@@ -66,6 +75,7 @@ class JobRoute extends React.Component {
                             {...job}
                             success={success}
                             userId={user.user.id}
+                            resume={resume}
                             handleUploadChange={this.handleUploadChange}
                             handleApplyForJob={this.handleApplyForJob}
                             />

@@ -157,7 +157,7 @@ const RestApiService = {
         );
   },
   postApplyJob(formData, userId) {
-    console.log(formData)
+    
     return fetch(`${config.API_ENDPOINT}/apply/${userId}`, {
       method: 'POST',
       headers: {
