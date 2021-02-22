@@ -46,12 +46,13 @@ class Search extends React.Component {
                             />
                         </div>
                         <div className='form-group checkbox-container'>
-                            <div>
+                            {/* un comment the following once the CLT web scrape is complete */}
+                            {/* <div>
                                 <Label htmlFor='search-clt-input'>
                                 CLT
                                 </Label>
                                 <Input type='checkbox' id='search-clt-input' name='search-clt-input' />
-                            </div>
+                            </div> */}
                             <div>
                                 <Label htmlFor='all-jobs-input'>See all jobs</Label>
                                 <Input onChange={handleSeeAllJobs} type='checkbox' id='all-jobs-input' name='all-jobs-input' />

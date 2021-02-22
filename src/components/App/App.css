@@ -75,7 +75,9 @@ h2 {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
 }
-
+#none-matching {
+    text-align: center;
+}
 .button-container>.form-group>label, .resume-buttons>.form-group>label {
     color:#28180B;
     width: 100%;

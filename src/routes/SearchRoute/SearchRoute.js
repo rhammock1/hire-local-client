@@ -92,7 +92,7 @@ class SearchRoute extends React.Component {
                                     />))
                             ) : ((searched) && (!results.length))
                                     ? <div>
-                                        <p>Sorry, there were no jobs matching your search terms</p>
+                                        <p id='none-matching'>Sorry, there were no jobs matching your search terms</p>
                                     </div>
                                     : (
                                         results.map((result) => (
