@@ -20,6 +20,7 @@ export default class App extends Component {
     error: null,
     jobs: [],
     userSaves: [],
+    applied: [],
     duplicate: {},
     resume: null,
     fileURL: null,
@@ -37,6 +38,7 @@ export default class App extends Component {
     const { user } = this.context;
     if (user.hasOwnProperty('id')) {
       this.getUserSaves();
+      this.getUserApplied();
       this.getUserResume();
     }
   }
@@ -53,6 +55,13 @@ export default class App extends Component {
     const { user } = this.context;
     RestApiService.getUserSaves(user.id)
       .then((saves) => this.setState({ userSaves: saves.saves }))
+      .catch((error) => this.setState({ error, hasError: true }));
+  }
+
+  getUserApplied = () => {
+    const { user } = this.context;
+    RestApiService.getUserApplied(user.id)
+      .then((applied) => this.setState({ applied }))
       .catch((error) => this.setState({ error, hasError: true }));
   }
 
@@ -93,6 +102,14 @@ export default class App extends Component {
     
     return savedJobs;
 
+  }
+
+  getAppliedJobs = () => {
+    const { applied, jobs } = this.state;
+    const appliedJobIds = applied.map((apply) => apply.job_id);
+    const appliedJobs = jobs.filter((job) => appliedJobIds.includes(job.id));
+
+    return appliedJobs;
   }
 
   checkForDuplicateSaves = (userSaves, job_id) => {
@@ -158,6 +175,7 @@ export default class App extends Component {
       handleSave: this.handleSave,
       getUserSaves: this.getUserSaves,
       getSavedJobs: this.getSavedJobs,
+      getAppliedJobs: this.getAppliedJobs,
       getAllJobs: this.getAllJobs,
       getUserResume: this.getUserResume,
       openResume: this.openResumeInNewPage,

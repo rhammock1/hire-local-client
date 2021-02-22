@@ -193,8 +193,9 @@ class AccountRoute extends React.Component {
 
     render() {
         const { stateError, reqs, success, resume, view, upload } = this.state;
-        const { getSavedJobs, openResume, error } = this.context;        
+        const { getSavedJobs, getAppliedJobs, openResume, error } = this.context;        
         const savedJobs = getSavedJobs();
+        const appliedJobs = getAppliedJobs();
         const { goBack } = this.props.history;
         return (
             <section>
@@ -204,6 +205,7 @@ class AccountRoute extends React.Component {
                 <div className='button-container'>
                     <Button onClick={this.handleView} name='opportunity' type='button'>Share a job opportunity</Button>
                     <Button onClick={this.handleView} name='saved' type='button'>See your saved jobs</Button>
+                    <Button onClick={this.handleView} name='applied' type='button'>See your applied jobs</Button>
                     {((resume) && (error === null)) 
                         ? <div className='resume-buttons'>
                             <Button type='button' onClick={openResume}>View resume</Button>
@@ -243,7 +245,11 @@ class AccountRoute extends React.Component {
                         : (view === 'saved')
                             ? <><h3>You have saved these jobs:</h3>
                                 {savedJobs.map((save) => <Job key={save.id} {...save} />)}</>
-                            : null
+                            : (view === 'applied')
+                                ? <><h3>You have applied to these jobs:</h3>
+                                {appliedJobs.map((apply) => <Job key={apply.id} {...apply} />)}
+                                </>
+                                :null
                     }
                 
                 

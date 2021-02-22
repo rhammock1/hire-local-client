@@ -6,6 +6,7 @@ const JobContext = React.createContext({
     handleSave: () => {},
     getUserSaves: () => {},
     getSavedJobs: () => {},
+    getAppliedJobs: () => {},
     getAllJobs: () => {},
     getUserResume: () => {},
     openResume: () => {},
