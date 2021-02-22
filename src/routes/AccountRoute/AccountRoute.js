@@ -74,6 +74,9 @@ class AccountRoute extends React.Component {
     handleAddReqs = () => {
         const element = document.getElementById('new-job-req');
         const { req, reqs } = this.state;
+        if (!req) {
+            return;
+        }
         reqs.push(req);
         this.setState({ req: '', reqs })
         element.value = '';
