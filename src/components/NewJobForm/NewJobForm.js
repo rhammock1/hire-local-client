@@ -28,7 +28,7 @@ class NewJobForm extends React.Component {
         const { toggled, inputId } = this.state;
         return (
             <div className='form-container'>
-                <form onSubmit={(event) => handleNewJobSubmit(event, user) }>
+                <form class='new-job-form' onSubmit={(event) => handleNewJobSubmit(event, user) }>
                 <div role='alert'>
                     {error && <p>{error}</p>}
                 </div>
