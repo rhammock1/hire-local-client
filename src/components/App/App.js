@@ -77,7 +77,7 @@ export default class App extends Component {
         }
         const fileURL = URL.createObjectURL(file);
         this.setState({ resume: file, fileURL });
-        console.log(file);
+        
         return true
       })
       .catch((error) => {

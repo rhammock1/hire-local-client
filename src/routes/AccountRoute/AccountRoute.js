@@ -48,7 +48,6 @@ class AccountRoute extends React.Component {
     }
 
     validateInputs = (newJob) => {
-        console.log(newJob);
         const requiredFields = ['user_id', 'title', 'summary', 'description', 'location', 'zipcode', 'contact'];
         let allGood = true;
         let message;
@@ -126,7 +125,7 @@ class AccountRoute extends React.Component {
         } = this.validateInputs(newJob);
 
         if (!allGood) {
-            this.setState({ stateError: message });
+            return this.setState({ stateError: message });
         }
 
         await RestApiService.addNewJob(newJob, formatReqs)
@@ -201,6 +200,7 @@ class AccountRoute extends React.Component {
         return (
             <section>
                 <h2>Welcome to your acccount</h2>
+                {(stateError) && <p>{stateError}</p>}
                 <div className='account-container'>
                 <h3>What would you like to do?</h3>
                 <div className='button-container'>
