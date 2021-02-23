@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import LandingPopUp from '../../components/LandingPopUp/LandingPopUp'
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm'
 import JobContext from '../../contexts/JobContext'
 
@@ -10,7 +11,8 @@ class RegistrationRoute extends Component {
   }
 
   state = {
-    formData: {}
+    formData: {},
+    visited: false,
   }
 
   static contextType = JobContext;
@@ -28,14 +30,19 @@ class RegistrationRoute extends Component {
     history.push(destination)
   }
 
+  handleClearPopUp = () => {
+    this.setState({ visited: true });
+  }
+
   render() {
     const { handleError, getUserResume } = this.context;
-    const { formData } = this.state;
+    const { formData, visited } = this.state;
     return (
       <section>
         <p>
           Search for local job opportunities or hire local talent
         </p>
+        {(!visited) ? <LandingPopUp handleClear={this.handleClearPopUp} /> : null}
         <h2>Sign up</h2>
         <RegistrationForm
           formData={formData}

@@ -163,12 +163,12 @@ h2 {
         width: 80%;
         margin: auto;
     }
-    .job-container {
+    .job-container, .LoginForm, #registration {
         width: 75%;
     }
 }
 @media all and (min-width: 750px) {
-    .account-container {
+    .account-container, .LoginForm, #registration {
         width: 70%;
     }
 }
@@ -183,7 +183,7 @@ h2 {
     .job-container {
         width: 60%;
     }
-    .account-container {
+    .account-container, .LoginForm, #registration {
         width: 55%;
     }
 }

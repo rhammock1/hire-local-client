@@ -32,6 +32,10 @@ footer {
     box-shadow: 1px 2px 3px #1C1917;
 
 }
+p {
+    color: #1C1917;
+    text-align: center;
+}
 .Button:hover {
     transform: translateY(-5px);
 }
