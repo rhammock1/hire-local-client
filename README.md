@@ -20,6 +20,6 @@ Server Repo [here](https://github.com/rhammock1/hire-local-server)
 
 ![ScreenShot](./images/Search.png)
 ![ScreenShot](./images/JobDetails.png)
-![ScreenShot](./images/AcountPage.png)
+![ScreenShot](./images/AcCountPage.png)
 ![ScreenShot](./images/NewJob.png)
 ![ScreenShot](./images/SavedJobs.png)
