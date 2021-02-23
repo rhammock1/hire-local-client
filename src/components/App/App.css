@@ -51,8 +51,8 @@ aside {
 .new-job-form>fieldset>.form-group>.Label {
     color: #1c1917;
 }
-.new-job-form>fieldset>.Button,
-.new-job-form>fieldset>.form-group>.Button {
+.req-buttons>.Button,
+.new-job-form>fieldset>.Button {
     background-color: #78A1C9;
 }
 h2 {
@@ -146,4 +146,44 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+}
+.form-container {
+    padding-top: 15px;
+}
+.req-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+@media all and (min-width: 500px) {
+    header>div {
+        margin: auto 0;
+    }
+    .search-container {
+        width: 80%;
+        margin: auto;
+    }
+    .job-container {
+        width: 75%;
+    }
+}
+@media all and (min-width: 750px) {
+    .account-container {
+        width: 70%;
+    }
+}
+@media all and (min-width: 850px) {
+    .search-container {
+        width: 60%;
+        
+    }
+    h2 {
+        width: 65%;
+    }
+    .job-container {
+        width: 60%;
+    }
+    .account-container {
+        width: 55%;
+    }
 }

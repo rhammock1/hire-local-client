@@ -221,6 +221,7 @@ export default class App extends Component {
               />
             </Switch>
           </JobContext.Provider>
+          <footer>&#169;2021 RHammock</footer>
         </main>
       </div>
     );

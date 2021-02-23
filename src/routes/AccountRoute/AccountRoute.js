@@ -204,7 +204,7 @@ class AccountRoute extends React.Component {
                 <div className='account-container'>
                 <h3>What would you like to do?</h3>
                 <div className='button-container'>
-                    <Button onClick={this.handleView} id='opportunity' name='opportunity' type='button'>Share a job</Button>
+                    <Button onClick={this.handleView} id='opportunity' name='opportunity' type='button'>Share a new job</Button>
                     <Button onClick={this.handleView} id='saved' name='saved' type='button'>See your saved jobs</Button>
                     <Button onClick={this.handleView} id='applied' name='applied' type='button'>See your applied jobs</Button>
                     {((resume) && (error === null)) 

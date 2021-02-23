@@ -113,8 +113,10 @@ class NewJobForm extends React.Component {
                             }
                             <Label htmlFor='new-job-req'>Job Requirement:</Label>
                             <Input onClick={this.toggleTips} onChange={handleReqChange} id='new-job-req' name='new-job-req' />
-                            <Button type='button' onClick={handleAddReqs}>Add Requirement</Button>
-                            <Button type='button' onClick={removeReq}>Remove Last Requirement</Button>
+                            <div className='req-buttons'>
+                                <Button type='button' onClick={handleAddReqs}>Add Requirement</Button>
+                                <Button type='button' onClick={removeReq}>Remove Last Requirement</Button>
+                            </div>
                         </div>
                         <Button type='submit'>Submit Job</Button>
                         <p>* Job posting tips from: <a target="_blank" rel="noopener noreferrer" href='https://business.linkedin.com/talent-solutions/blog/job-descriptions/2018/5-must-dos-for-writing-inclusive-job-descriptions#:~:text=To%20make%20your%20job%20descriptions,inclusive%20and%20less%20likely%20to'>LinkedIn</a></p>
