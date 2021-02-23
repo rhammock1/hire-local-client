@@ -5,6 +5,16 @@ import { Input, Label, Required } from '../Form/Form';
 
 class NewJobForm extends React.Component {
 
+    static defaultProps = {
+        user: {},
+        handleNewJobSubmit: () => {},
+        error: null,
+        handleAddReqs: () => {},
+        reqs: [],
+        handleReqChange: () => {},
+        removeReq: () => {},
+    }
+
     state = {
         toggled: false,
         inputId: '',
@@ -28,7 +38,7 @@ class NewJobForm extends React.Component {
         const { toggled, inputId } = this.state;
         return (
             <div className='form-container'>
-                <form class='new-job-form' onSubmit={(event) => handleNewJobSubmit(event, user) }>
+                <form className='new-job-form' onSubmit={(event) => handleNewJobSubmit(event, user) }>
                 <div role='alert'>
                     {error && <p>{error}</p>}
                 </div>
