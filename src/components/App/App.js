@@ -65,10 +65,10 @@ export default class App extends Component {
       .catch((error) => this.setState({ error, hasError: true }));
   }
 
-  getUserResume = () => {
+  getUserResume = async () => {
     const { user } = this.context;
     
-    return RestApiService.getResume(user.id)
+    return await RestApiService.getResume(user.id)
       .then((file) => {
         if (!file) {
 
@@ -77,6 +77,7 @@ export default class App extends Component {
         }
         const fileURL = URL.createObjectURL(file);
         this.setState({ resume: file, fileURL });
+        console.log(file);
         return true
       })
       .catch((error) => {

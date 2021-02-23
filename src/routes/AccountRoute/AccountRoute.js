@@ -169,14 +169,14 @@ class AccountRoute extends React.Component {
             .catch((error) => this.setState({ stateError: error }))
     }
 
-    handlePatchResume = () => {
+    handlePatchResume = async () => {
         const { formData } = this.state;
         const { handleError, getUserResume } = this.context;
         const { userId } = this.props.match.params;
-        RestApiService.patchResume(formData, userId)
+        await RestApiService.patchResume(formData, userId)
             .then(() => this.setState({ upload: false }))
             .catch((error) => handleError(error));
-        getUserResume();
+        await getUserResume();
     }
 
     handleDeleteResume = () => {
