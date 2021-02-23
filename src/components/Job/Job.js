@@ -44,10 +44,10 @@ class Job extends React.Component {
             <div className='job-container'>
                 <div className='job-details'>
                     <div className='job-title'>
-                        <h4>{title}</h4>
+                        <h4>{title} <span onClick={() => handleSave(id)} className={`job ${saveClass}`}>&#10084;</span></h4>
                         <span>{location}</span>
                     </div>
-                    <span onClick={() => handleSave(id)} className={`job ${saveClass}`}>&#10084;</span>
+                    
                 </div>
                 <div className='job-card-details'>
                     {/* CSS grid for this part maybe 1 / 2  */}

@@ -10,7 +10,7 @@ class JobRoute extends React.Component {
         error: null,
         hasError: false,
         job: {},
-        formData: {},
+        coverLetter: {},
         success: false,
         resume: {},
     }
@@ -32,20 +32,19 @@ class JobRoute extends React.Component {
 
     handleUploadChange = (event) => {
         const coverLetter = event.target.files[0];
-        let formData = new FormData();
-        formData.append('coverLetter', coverLetter);
-        this.setState({ formData });
+        // let formData = new FormData();
+        // formData.append('coverLetter', coverLetter);
+        this.setState({ coverLetter });
     }
 
     handleApplyForJob = (userId) => {
-        let { formData } = this.state;
+        const { coverLetter } = this.state;
         const { handleError } = this.context;
         const { jobId } = this.props.match.params;
         
-        if (Object.entries(formData).length === 0) {
-            formData = new FormData();
-            
-        }
+        let formData = new FormData();
+    
+        formData.append('coverLetter', coverLetter)
         
         formData.append('jobId', jobId);
         RestApiService.postApplyJob(formData, userId)
@@ -68,7 +67,8 @@ class JobRoute extends React.Component {
         })
         return (
             <section>
-                <h2>{job.title}</h2><span onClick={() => handleSave(job.id)} className={`job ${saveClass}`}>&#10084;</span>
+                <div className='big-container'>
+                <h2>{job.title} <span onClick={() => handleSave(job.id)} className={`job ${saveClass}`}>&#10084;</span></h2>
                 <UserContext.Consumer>
                     {user => {
                         return <JobDetails
@@ -81,6 +81,7 @@ class JobRoute extends React.Component {
                             />
      } }
                 </UserContext.Consumer>
+                </div>
             </section>
         )
     }

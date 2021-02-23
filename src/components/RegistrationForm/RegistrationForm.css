@@ -24,12 +24,12 @@ footer {
     margin: 10px auto;
     padding: 5%;
     border: none;
-    background-color: #A0602C;
-    color: #FDFAF7;
+    background-color: #F1896A;
+    color: #1C1917;
     border-radius: 10px;
     font-weight:600;
     font-size: 16px;
-    box-shadow: 1px 2px 3px #28180B;
+    box-shadow: 1px 2px 3px #1C1917;
 
 }
 .Button:hover {

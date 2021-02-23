@@ -5,10 +5,11 @@
 }
 .Label {
     width:max-content;
-    color: #fdfaf7;
+    color: #1C1917;
+    
 }
 h4 {
-    color:#fdfaf7;
+    color:#1C1917;
 }
 textarea {
     resize: vertical;
@@ -28,7 +29,7 @@ fieldset>.Button {
     margin: 0;
 }
 aside {
-    background-color: #D3935F;
+    background-color: #EC6136;
     border-radius: 10px;
     padding: 5px;
     font-size: 14px;
@@ -37,11 +38,12 @@ aside {
 .Input, textarea, select {
     width: 100%;
     
-    background-color: #D3935F;
+    background-color: #CD3F13;
     border: none;
     padding: 4px;
-    color: #fdfaf7
+    color: #1C1917
 }
+
 h2 {
     width: 85%;
     margin: auto;
@@ -57,6 +59,12 @@ h2 {
 .resume-buttons>.form-group {
     grid-column: 1 / 4;
     grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 1px 2px 3px #1C1917;
+    padding: 5px;
 }
 #applied {
     grid-column: 1 / 3;
@@ -70,17 +78,27 @@ h2 {
     grid-row: 3 / 4;
 
 }
+.button-container>.form-group {
+    background-color: #EC6136;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 1px 2px 3px #1C1917;
+    padding: 5px;
+}
 .resume-buttons {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
+    justify-items: center;
 }
 #none-matching {
     text-align: center;
 }
 .button-container>.form-group>label, .resume-buttons>.form-group>label {
-    color:#28180B;
-    width: 100%;
+    color:#1C1917;
+    width: fit-content;
     font-size: 14px;
 }
 
@@ -92,4 +110,21 @@ h2 {
 }
 #upload-resume {
     grid-column: 1 / 4;
+}
+
+.resume-buttons>.form-group.Label {
+    width: fit-content;
+}
+.account-container {
+    background-color: #CD3F13;
+    width: 80%;
+    height: auto;
+    padding: 10px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 1px 2px 3px #1C1917;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }

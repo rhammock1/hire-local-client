@@ -201,7 +201,7 @@ class AccountRoute extends React.Component {
         return (
             <section>
                 <h2>Welcome to your acccount</h2>
-                
+                <div className='account-container'>
                 <h3>What would you like to do?</h3>
                 <div className='button-container'>
                     <Button onClick={this.handleView} id='opportunity' name='opportunity' type='button'>Share a job opportunity</Button>
@@ -256,6 +256,7 @@ class AccountRoute extends React.Component {
                 
                 
                 <Button onClick={goBack} type='button'>Go Back</Button>
+                </div>
             </section>
         )
     }

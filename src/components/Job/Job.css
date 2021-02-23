@@ -1,14 +1,18 @@
 .job-saved {
-    color: red;
+    color: #FBFAF9;
 }
 .job-title>h4 {
-    color: #28180b;
+    color: #1C1917;
     font-size: 22px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
 }
 .job {
     font-size: 45px;
-    position:absolute;
-    right: 15px;
+    position:relative;
+    /* right: 15px; */
+    
 }
 .jobs-container {
     width: 100%;
@@ -25,13 +29,12 @@
     align-items: center;
     justify-content: space-around;
     margin:auto;
-    background-color: #C67737;
+    background-color: #EC6136;
     border-radius: 10px;
     margin-top: 10px;
-    box-shadow: 1px 2px 3px #28180b;
+    box-shadow: 1px 2px 3px #1C1917;
 }
 .Button>a {
-    color: #fdfaf7;
     font-size: 16px;
 }
 .job-card-details {
@@ -56,8 +59,10 @@
     text-align: center;
 }
 h4 {
-    display: inline;
+    
     width: fit-content;
+    margin: 0;
+    margin-right: 0;
 }
 .job-details {
     width:100%;

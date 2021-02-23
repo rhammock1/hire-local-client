@@ -186,7 +186,7 @@ export default class App extends Component {
       <div className='App'>
         <Header />
         <div className='banner-image-container'>
-          <img id='banner-image' src='https://williamsburgohio.org/wp-content/uploads/2020/02/local.jpg' alt='support local business banner' />
+          <img id='banner-image' src='https://www.keeplouisvilleweird.com/resources/Site/Stay%20Calm.%20Stay%20Safe.%20Support%20Local.%20Banner.png' alt='support local business banner' />
         </div>
         <main>
           {hasError && (
