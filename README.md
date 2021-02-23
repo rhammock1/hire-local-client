@@ -18,8 +18,8 @@ Server Repo [here](https://github.com/rhammock1/hire-local-server)
 
 ## Screen Shots:
 
-![ScreenShot](images/Screenshot from 2021-02-23 18-20-10.png)
-![ScreenShot](images/Screenshot from 2021-02-23 18-20-29.png)
-![ScreenShot](images/Screenshot from 2021-02-23 18-20-42.png)
-![ScreenShot](images/Screenshot from 2021-02-23 18-20-52.png)
-![ScreenShot](images/Screenshot from 2021-02-23 18-20-59.png)
+![ScreenShot](./images/Screenshot from 2021-02-23 18-20-10.png)
+![ScreenShot](./images/Screenshot from 2021-02-23 18-20-29.png)
+![ScreenShot](./images/Screenshot from 2021-02-23 18-20-42.png)
+![ScreenShot](./images/Screenshot from 2021-02-23 18-20-52.png)
+![ScreenShot](./images/Screenshot from 2021-02-23 18-20-59.png)
