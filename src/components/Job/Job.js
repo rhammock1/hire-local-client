@@ -8,6 +8,15 @@ class Job extends React.Component {
     
     static contextType = JobContext;
 
+    static defaultProps = {
+        id: 1,
+        title: 'title',
+        exp_level: 'entry',
+        job_type: 'full-time',
+        summary: 'summary',
+        location: 'city, state',
+    }
+
     render() {
         const {
             id,
@@ -44,7 +53,7 @@ class Job extends React.Component {
             <div className='job-container'>
                 <div className='job-details'>
                     <div className='job-title'>
-                        <h4>{title} <span onClick={() => handleSave(id)} className={`job ${saveClass}`}><i class="fas fa-heart"></i><i class="far fa-heart"></i></span></h4>
+                        <h4>{title} <span onClick={() => handleSave(id)} className={`job ${saveClass}`}><i className="fas fa-heart"></i><i className="far fa-heart"></i></span></h4>
                         <span>{location}</span>
                     </div>
                     

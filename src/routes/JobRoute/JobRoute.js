@@ -68,7 +68,7 @@ class JobRoute extends React.Component {
         return (
             <section>
                 <div className='big-container'>
-                <h2>{job.title} <span onClick={() => handleSave(job.id)} className={`job ${saveClass}`}><i class="fas fa-heart"></i><i class="far fa-heart"></i></span></h2>
+                <h2>{job.title} <span onClick={() => handleSave(job.id)} className={`job ${saveClass}`}><i className="fas fa-heart"></i><i className="far fa-heart"></i></span></h2>
                 <UserContext.Consumer>
                     {user => {
                         return <JobDetails
