@@ -105,8 +105,8 @@ export default class App extends Component {
 
   }
 
-  getAppliedJobs = () => {
-
+  getAppliedJobs = async () => {
+    await this.getUserApplied();
     const { applied, jobs } = this.state;
     const appliedJobIds = applied.map((apply) => apply.job_id);
     const appliedJobs = jobs.filter((job) => appliedJobIds.includes(job.id));

@@ -19,6 +19,7 @@ class AccountRoute extends React.Component {
         view: null,
         formData: {},
         upload: false,
+        appliedJobs: [],
     };
 
     static contextType = JobContext;
@@ -31,9 +32,10 @@ class AccountRoute extends React.Component {
       }
     
     async componentDidMount() {
-        const { getUserResume } = this.context;
+        const { getUserResume, getAppliedJobs } = this.context;
         const resume = await getUserResume();
-
+        const appliedJobs = await getAppliedJobs();
+        this.setState({ appliedJobs });
         if (!resume) {
             this.setState({ resume: false });
         } else {
@@ -192,10 +194,10 @@ class AccountRoute extends React.Component {
     }
 
     render() {
-        const { stateError, reqs, success, resume, view, upload } = this.state;
-        const { getSavedJobs, getAppliedJobs, openResume, error } = this.context;        
+        const { stateError, reqs, success, resume, view, upload, appliedJobs } = this.state;
+        const { getSavedJobs, openResume, error } = this.context;        
         const savedJobs = getSavedJobs();
-        const appliedJobs = getAppliedJobs();
+        
         const { goBack } = this.props.history;
         return (
             <section>
