@@ -43,24 +43,24 @@ export default class App extends Component {
     }
   }
 
-  getAllJobs = () => {
-    RestApiService.getAllJobs()
+  getAllJobs = async () => {
+    await RestApiService.getAllJobs()
       .then((jobs) => {
         return this.setState({ jobs: jobs.notExpired });
       })
       .catch((error) => this.setState({ hasError: true, error }));
   }
 
-  getUserSaves = () => {
+  getUserSaves = async () => {
     const { user } = this.context;
-    RestApiService.getUserSaves(user.id)
+    await RestApiService.getUserSaves(user.id)
       .then((saves) => this.setState({ userSaves: saves.saves }))
       .catch((error) => this.setState({ error, hasError: true }));
   }
 
-  getUserApplied = () => {
+  getUserApplied = async () => {
     const { user } = this.context;
-    RestApiService.getUserApplied(user.id)
+    await RestApiService.getUserApplied(user.id)
       .then((applied) => this.setState({ applied }))
       .catch((error) => this.setState({ error, hasError: true }));
   }
@@ -106,6 +106,7 @@ export default class App extends Component {
   }
 
   getAppliedJobs = () => {
+
     const { applied, jobs } = this.state;
     const appliedJobIds = applied.map((apply) => apply.job_id);
     const appliedJobs = jobs.filter((job) => appliedJobIds.includes(job.id));

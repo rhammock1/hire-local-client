@@ -65,7 +65,7 @@ const JobDetails = function(props) {
                         ? <>
                             <h4>Successfully applied for job</h4>
                             
-                            <p>Be sure to keep an eye on your email for a response from the hiring manager! Good Luck!</p>
+                            <p className='desc' >Be sure to keep an eye on your email for a response from the hiring manager! Good Luck!</p>
                         </>
                         : (!resume) 
                             ? <>
