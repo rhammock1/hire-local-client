@@ -3,25 +3,15 @@ import { Label, Input } from '../Form/Form';
 import Button from '../Button/Button';
 
 const NewResume = function(props) {
+    // Check if the input should PATCH or POST
     const { patch, handleUploadChange, handlePatchResume, handleSubmitUpload } = props;
-
-    if(patch) {
-        return (
-            <div className='form-group'>
-                <Label html='upload-resume'>Upload a new resume</Label>
-                <Input onChange={handleUploadChange} type='file' id='upload-resume-input' name='upload-resume'/>
-                <Button onClick={handlePatchResume} type='button'>Submit</Button>
-            </div>
-        )
-    } else {
-        return (
-            <div className='form-group'>
-                <Label html='upload-resume'>Upload a new resume</Label>
-                <Input onChange={handleUploadChange} type='file' id='upload-resume-input' name='upload-resume'/>
-                <Button onClick={handleSubmitUpload} type='button'>Submit</Button>
-            </div>
-        )
-    }
+    const submit = (patch) ? handlePatchResume : handleSubmitUpload;
+    const div = <div className='form-group'>
+                    <Label html='upload-resume'>Upload a new resume</Label>
+                    <Input onChange={handleUploadChange} type='file' id='upload-resume-input' name='upload-resume'/>
+                    <Button onClick={submit} type='button'>Submit</Button>
+                </div>
+    return div;
 }
 
 export default NewResume;

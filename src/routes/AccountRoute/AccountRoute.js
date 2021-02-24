@@ -201,7 +201,7 @@ class AccountRoute extends React.Component {
         const { goBack } = this.props.history;
         return (
             <section>
-                <h2>Welcome to your acccount</h2>
+                <h2>Welcome to your account</h2>
                 {(stateError) && <p>{stateError}</p>}
                 <div className='account-container'>
                 <h3>What would you like to do?</h3>
@@ -224,7 +224,7 @@ class AccountRoute extends React.Component {
                         : (!upload)
                             ? <div className='resume-buttons'><Button id='upload-resume' onClick={this.handleUploadView}type='button'>Upload a resume</Button></div>
                             : <NewResume
-                                patch={false}auto
+                                patch={false}
                                 handleSubmitUpload={this.handleSubmitUpload}
                                 handleUploadChange={this.handleUploadChange} />}
                 </div>

@@ -43,7 +43,6 @@ class NewJobForm extends React.Component {
                     {error && <p>{error}</p>}
                 </div>
                     <fieldset>
-                        <legend>New Job</legend>
                         <div className='form-group'>
                             {((toggled) && (inputId === 'new-job-title'))
                                 ? <aside><span id='close-tip' onClick={this.closeTips}>&times;</span> Avoid gendered words, like “rockstar,” “ninja,” and “dominate”. Keep it straightforward*</aside>

@@ -61,6 +61,9 @@ const JobDetails = function(props) {
                 </ul>
             </div>
             <div>
+                {/* Check if applying for the job was successful.
+                    If not, if there is no resume for the user display basic apply message
+                    If resume is present, then allow the user to apply with one click */}
                 {
                     (success)
                         ? <>
