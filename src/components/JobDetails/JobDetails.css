@@ -23,7 +23,9 @@
 .job-location>h3 {
     margin: 0;
 }
-
+.desc {
+    color: #FBFAF9;
+}
 .big-container {
     background-color: #3C6997;
     width: 90%;

@@ -36,7 +36,7 @@ class RegistrationForm extends Component {
         this.setState({ error: res.error })
       })
 
-    if(formData) {
+    if(Object.entries(formData).length > 0) {
       await RestApiService.postResume(formData, userId)
       .then(() => {
         this.props.onRegistrationSuccess()
@@ -53,7 +53,7 @@ class RegistrationForm extends Component {
         name.value = '';
         username.value = '';
         password.value = '';
-        if(formData) {
+        if(Object.entries(formData).length > 0) {
           getUserResume();
         }
         this.context.processLogin(res.authToken);

@@ -51,7 +51,7 @@ const JobDetails = function(props) {
             </div>
             <div>
                 <h4>Job Description: </h4>
-                <p>{description}</p>
+                <p className='desc'>{description}</p>
             </div>
             <div>
                 <h4>Job Requirements:</h4>
@@ -70,7 +70,7 @@ const JobDetails = function(props) {
                         : (!resume) 
                             ? <>
                                 <h4>Interested in Applying?</h4>
-                                <p>Email your resume to the Hiring Manager at <strong>{contact}</strong></p> 
+                                <p className='desc'>Email your resume to the Hiring Manager at <strong>{contact}</strong></p> 
                             </>
                             : <>
                                 <h4>Interested in Applying?</h4>
@@ -78,7 +78,7 @@ const JobDetails = function(props) {
                                 <Label htmlFor='coverLetter'>Upload cover letter (optional)</Label>
                                 <Input onChange={handleUploadChange} type='file' id='coverLetter' name='coverLetter' />
                                 <Button onClick={() => handleApplyForJob(userId)} type='button'>Apply now</Button>
-                                <p>Clicking the Apply Now button will send your resume (and optional cover letter) to <strong>{contact}</strong></p>
+                                <p className='desc'>Clicking the Apply Now button will send your resume (and optional cover letter) to <strong>{contact}</strong></p>
                             </>
                 }
             </div>
