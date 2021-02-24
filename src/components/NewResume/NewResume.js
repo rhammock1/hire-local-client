@@ -9,7 +9,7 @@ const NewResume = function(props) {
         return (
             <div className='form-group'>
                 <Label html='upload-resume'>Upload a new resume</Label>
-                <Input onChange={handleUploadChange} type='file' id='upload-resume' name='upload-resume'/>
+                <Input onChange={handleUploadChange} type='file' id='upload-resume-input' name='upload-resume'/>
                 <Button onClick={handlePatchResume} type='button'>Submit</Button>
             </div>
         )
@@ -17,7 +17,7 @@ const NewResume = function(props) {
         return (
             <div className='form-group'>
                 <Label html='upload-resume'>Upload a new resume</Label>
-                <Input onChange={handleUploadChange} type='file' id='upload-resume' name='upload-resume'/>
+                <Input onChange={handleUploadChange} type='file' id='upload-resume-input' name='upload-resume'/>
                 <Button onClick={handleSubmitUpload} type='button'>Submit</Button>
             </div>
         )

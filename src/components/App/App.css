@@ -94,8 +94,11 @@ h2 {
     grid-row: 3 / 4;
 
 }
+.button-container>.form-group>.Button {
+    background-color: #78A1C9;
+}
 .button-container>.form-group {
-    background-color: #2C4C6D;
+    background-color: #5487BB;
     display: flex;
     flex-direction: column;
     align-items: center;

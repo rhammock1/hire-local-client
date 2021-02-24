@@ -20,5 +20,9 @@ form {
 }
 #upload-resume {
     width: 80%;
+    background-color: #5487BB;
+}
+#upload-resume-input {
+    width: 80%;
     background-color: #3C6997;
 }
