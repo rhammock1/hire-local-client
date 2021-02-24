@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Button from '../Button/Button';
 import { Input, Label } from '../Form/Form';
 import './JobDetails.css';
+
 
 const JobDetails = function(props) {
     const {
@@ -20,8 +20,9 @@ const JobDetails = function(props) {
         userId,
         success,
         resume,
+        goBack,
     } = props;
-    
+
     const capitalJobType = job_type.charAt(0).toUpperCase() + job_type.slice(1);
 
     let experience = '';
@@ -82,7 +83,7 @@ const JobDetails = function(props) {
                             </>
                 }
             </div>
-            <Button type='button'><Link to='/'>Go Back</Link></Button>
+            <Button type='button' onClick={goBack}>Go Back</Button>
         </div>
     )
 }

@@ -24,7 +24,7 @@ class SearchRoute extends React.Component {
                 : res.json()
             )
             .then((data) => {
-                const zips = data.DataList;
+                const zips = data.DataList || [];
                 let zipcodes = [];
                 zips.map((obj) => zipcodes.push(obj.Code));
                 return zipcodes;

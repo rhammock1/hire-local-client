@@ -32,8 +32,6 @@ class JobRoute extends React.Component {
 
     handleUploadChange = (event) => {
         const coverLetter = event.target.files[0];
-        // let formData = new FormData();
-        // formData.append('coverLetter', coverLetter);
         this.setState({ coverLetter });
     }
 
@@ -65,6 +63,8 @@ class JobRoute extends React.Component {
             }
             return saveClass;
         })
+        const { goBack } = this.props.history;
+
         return (
             <section>
                 <div className='big-container'>
@@ -73,6 +73,7 @@ class JobRoute extends React.Component {
                     {user => {
                         return <JobDetails
                             {...job}
+                            goBack={goBack}
                             success={success}
                             userId={user.user.id}
                             resume={resume}
