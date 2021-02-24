@@ -14,18 +14,14 @@ h4 {
 textarea {
     resize: vertical;
 }
-/* .form-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-} */
 fieldset {
     display: flex;
     flex-direction: column;
-
+    width: 80%;
+    
 }
 fieldset>.Button {
-    align-self: flex-end;
+    align-self: center;
     margin: 0;
 }
 aside {
@@ -150,8 +146,12 @@ h2 {
     align-items: center;
     justify-content: space-around;
 }
+.account-container>h3 {
+    margin-top: 10px;
+}
 .form-container {
     padding-top: 15px;
+    margin: auto;
 }
 .req-buttons {
     display: flex;
@@ -166,16 +166,25 @@ h2 {
         width: 80%;
         margin: auto;
     }
-    .job-container, .LoginForm, #registration {
+    .job-container, .form-container, #registration {
         width: 75%;
     }
 }
 @media all and (min-width: 750px) {
-    .account-container, .LoginForm, #registration {
+    .account-container, .form-container, #registration {
         width: 70%;
     }
 }
 @media all and (min-width: 850px) {
+    .req-buttons {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .req-buttons>.Button {
+        width: 40%;
+        height: 57px;
+    }
     .search-container {
         width: 60%;
         
@@ -186,7 +195,7 @@ h2 {
     .job-container {
         width: 60%;
     }
-    .account-container, .LoginForm, #registration {
-        width: 55%;
+    .account-container, .form-container, #registration {
+        width: 75%;
     }
 }
