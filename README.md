@@ -1,6 +1,8 @@
 # Hire Local Client Capstone
 Thinkful Third solo capstone
 
+## Stack Used: HTML, CSS, React, Node.js, Express, PostgreSQL
+
 Uses SendGrid API and Zip-Codes API
 
 Helps small and local businesses post jobs easily and reach local audiences. 
